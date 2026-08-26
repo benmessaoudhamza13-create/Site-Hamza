@@ -3,7 +3,7 @@ export type Projet = {
   code: string;
   titre: string;
   periode: string;
-  categorie: "Portefeuille" | "Valorisation" | "Simulation" | "Compétition";
+  categorie: "Portefeuille" | "Valorisation" | "Quantitatif" | "Compétition";
   resultat: string;
   description: string;
   details: string[];
@@ -12,24 +12,57 @@ export type Projet = {
 
 export const projets: Projet[] = [
   {
-    slug: "globstrat",
+    slug: "defi-bnc",
     code: "P/01",
-    titre: "Simulation de gestion stratégique Globstrat",
-    periode: "B.A.A. — 1er rang de cohorte",
-    categorie: "Simulation",
-    resultat: "+50 % du cours de l'action simulée",
+    titre: "Défi de gestion d'actifs BNC — allocation marchés émergents et gouvernance",
+    periode: "Compétition inter-cohortes — Cohorte Financière BNC",
+    categorie: "Portefeuille",
+    resultat: "Alpha de 3 % sur la poche Actions Int'l / Alternatifs (résultat d'équipe)",
     description:
-      "Rôle de CFO d'une multinationale simulée sur plusieurs trimestres, en compétition directe avec les autres équipes de la cohorte.",
+      "Gestion en équipe d'un portefeuille multi-actifs avec gouvernance de risque explicite. Responsable de l'allocation aux marchés émergents et de la gouvernance globale du projet.",
     details: [
-      "Structure du capital : arbitrage dette / équité à chaque levée de fonds simulée",
-      "Politique de dividendes et gestion du fonds de roulement (BFR)",
-      "1er rang de cohorte, toutes fonctions confondues (Finance, Marketing, Logistique)",
+      "Gestion de l'allocation aux marchés émergents (pondération pays / région) au sein d'une équipe de gestion multi-actifs",
+      "Animation de réunions macro hebdomadaires (les lundis) : mise à jour de la thèse et ajustement des décisions d'allocation",
+      "Gouvernance du projet : structure de prise de décision d'équipe",
+      "Résultat d'équipe : alpha de 3 % généré via couverture Delta-Gamma sur la poche Alternatifs, suivi VaR et tracking error",
     ],
-    tags: ["Structure du capital", "Stratégie financière", "Simulation"],
+    tags: ["Allocation d'actifs", "Marchés émergents", "Gouvernance", "Macro discrétionnaire"],
+  },
+  {
+    slug: "modele-factoriel-devises",
+    code: "P/02",
+    titre: "Modèle factoriel des devises par analyse en composantes principales",
+    periode: "M.Sc. — Méthodes économétriques en finance, HEC Montréal",
+    categorie: "Quantitatif",
+    resultat: "3 facteurs expliquant 86,9 % de la variance des rendements (5 devises, 2004-2023)",
+    description:
+      "Construction d'un modèle factoriel de risque de change par ACP, cadré comme mandat pour une société de gestion exposée au risque de change.",
+    details: [
+      "Extraction de 3 composantes principales par décomposition spectrale : Facteur Dollar, Liquidité Monétaire USD / Global Financial Cycle, Facteur Émergent / Commodités",
+      "Modèle de régression à 3 facteurs avec R² moyen de 79,97 %, validé contre le VIX, le taux 3 mois américain et le pétrole WTI",
+      "Tests de robustesse : ARCH-LM, correction des écarts-types par la méthode HC3 de White",
+    ],
+    tags: ["ACP", "Facteurs macro", "Devises", "Économétrie"],
+  },
+  {
+    slug: "cad-usd-determinants",
+    code: "P/03",
+    titre: "Déterminants macro-financiers du taux de change CAD/USD",
+    periode: "M.Sc. — Introduction à l'économétrie, HEC Montréal (travail d'équipe de 4)",
+    categorie: "Quantitatif",
+    resultat: "R² ajusté de 0,639 sur 179 observations mensuelles (2010-2024)",
+    description:
+      "Identification empirique des déterminants macro-financiers du CAD/USD par régression multiple, avec emphase sur l'effet du prix du pétrole.",
+    details: [
+      "Modèle OLS multivarié (erreurs-types robustes HC1) : Dollar Index (+1 % USD → -0,79 % CAD, p<0,001), pétrole (+10 % pétrole → +0,23 % CAD, p=0,026), VIX significatif",
+      "Batterie de diagnostics : Breusch-Pagan et White, Ramsey RESET, VIF (toutes < 4)",
+      "Revue de littérature académique intégrée sur le statut de pétro-devise du Canada",
+    ],
+    tags: ["Macro", "Devises", "Pétro-devise", "OLS"],
   },
   {
     slug: "blackberry-dcf",
-    code: "P/02",
+    code: "P/04",
     titre: "Stock pitch BlackBerry — analyse fondamentale",
     periode: "B.A.A.",
     categorie: "Valorisation",
@@ -38,76 +71,14 @@ export const projets: Projet[] = [
       "Note de recherche buy-side complète : modèle DCF avec analyse de sensibilité, comparables boursiers et diagnostic stratégique.",
     details: [
       "Modèle DCF multi-scénarios avec tests de sensibilité (WACC, croissance terminale)",
-      "Comparables boursiers et diagnostic stratégique (forces, faiblesses, menaces, opportunités)",
+      "Comparables boursiers et diagnostic stratégique",
       "Défense du cours cible devant un comité d'experts",
     ],
     tags: ["DCF", "Comparables", "Equity research"],
   },
   {
-    slug: "stocktrak",
-    code: "P/03",
-    titre: "Gestion de portefeuille institutionnel — StockTrak",
-    periode: "B.A.A.",
-    categorie: "Portefeuille",
-    resultat: "Mandat simulé de 500 000 $",
-    description:
-      "Gestion d'un mandat en actions canadiennes avec approche top-down et sélection fondamentale.",
-    details: [
-      "Allocation sectorielle tactique guidée par un cadre macro top-down",
-      "Sélection de titres sur filtres qualité et momentum",
-      "Suivi de performance et rebalancement actif du portefeuille",
-    ],
-    tags: ["Top-Down", "Actions canadiennes", "Sélection de titres"],
-  },
-  {
-    slug: "defi-bnc",
-    code: "P/04",
-    titre: "Défi de gestion d'actifs — Cohorte financière BNC",
-    periode: "Compétition inter-cohortes",
-    categorie: "Compétition",
-    resultat: "Alpha de 3 % sur la poche Actions Int'l / Alternatifs",
-    description:
-      "Gestion d'un portefeuille multi-actifs en équipe, avec gouvernance de risque explicite et contraintes de mandat.",
-    details: [
-      "Portefeuille multi-actifs : actions internationales et actifs alternatifs",
-      "Gouvernance des risques : VaR, tracking error, contraintes de mandat",
-      "Alpha généré de 3 % vs indice de référence sur la période du défi",
-    ],
-    tags: ["Multi-actifs", "Gestion du risque", "VaR"],
-  },
-  {
-    slug: "morgan-stanley",
-    code: "P/05",
-    titre: "Simulation Morgan Stanley",
-    periode: "B.A.A.",
-    categorie: "Simulation",
-    resultat: "Participation compétitive",
-    description:
-      "Simulation de stratégie d'investissement sur les marchés financiers, dans un format inspiré des programmes de formation buy-side.",
-    details: [
-      "Construction de thèses d'investissement sous contrainte de temps",
-      "Arbitrages risque / rendement présentés à un jury",
-    ],
-    tags: ["Stratégie d'investissement", "Marchés financiers"],
-  },
-  {
-    slug: "datathon-hec",
-    code: "P/06",
-    titre: "Datathon HEC",
-    periode: "B.A.A.",
-    categorie: "Compétition",
-    resultat: "Analyse livrée sous contrainte de temps",
-    description:
-      "Analyse de données appliquée à une problématique d'affaires, en équipe, sur un format compétitif de courte durée.",
-    details: [
-      "Nettoyage et exploration de données sous forte contrainte de temps",
-      "Restitution des résultats à un jury mixte académique / industrie",
-    ],
-    tags: ["Analyse de données", "Python"],
-  },
-  {
     slug: "dollarama-esg",
-    code: "P/07",
+    code: "P/05",
     titre: "Stock pitch ESG — Dollarama",
     periode: "B.A.A. — 2e place",
     categorie: "Valorisation",
