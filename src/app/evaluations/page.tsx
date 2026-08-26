@@ -33,7 +33,7 @@ export default function EvaluationsPage() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-16">
       <SectionHeader
-        code="04"
+        code="05"
         eyebrow="Évaluations d'entreprises"
         title="Modèles, hypothèses et thèses complètes"
       />

@@ -8,7 +8,7 @@ export default function MacroPage() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-16">
       <SectionHeader
-        code="02"
+        code="03"
         eyebrow="Revue macro hebdomadaire"
         title="Ce qui a bougé, et pourquoi ça compte"
       />

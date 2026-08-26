@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="flex flex-wrap gap-6 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--text-on-ink-dim)]">
           <a
             className="transition-colors hover:text-signal"
-            href="mailto:benmessaoudhamza13@gmail.com"
+            href="mailto:hamza.ben-messaoud@hec.ca"
           >
             Courriel
           </a>

@@ -7,7 +7,7 @@ export default function OutilsPage() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-16">
       <SectionHeader
-        code="03"
+        code="04"
         eyebrow="Outils & instruments"
         title="Dashboards construits pour mon propre usage"
       />

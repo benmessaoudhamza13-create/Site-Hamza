@@ -1,10 +1,11 @@
 import Link from "next/link";
 
 const links = [
-  { href: "/projets", label: "Projets", code: "01" },
-  { href: "/macro", label: "Revue macro", code: "02" },
-  { href: "/outils", label: "Outils", code: "03" },
-  { href: "/evaluations", label: "Évaluations", code: "04" },
+  { href: "/apropos", label: "À propos", code: "01" },
+  { href: "/projets", label: "Projets", code: "02" },
+  { href: "/macro", label: "Revue macro", code: "03" },
+  { href: "/outils", label: "Outils", code: "04" },
+  { href: "/evaluations", label: "Évaluations", code: "05" },
 ];
 
 export default function Nav() {

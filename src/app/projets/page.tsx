@@ -7,7 +7,7 @@ export default function ProjetsPage() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-16">
       <SectionHeader
-        code="01"
+        code="02"
         eyebrow="Projets & compétitions"
         title="Ce que j'ai construit, en classe et en dehors"
       />

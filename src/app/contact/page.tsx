@@ -5,7 +5,7 @@ export const metadata = { title: "Contact — Hamza Ben Messaoud" };
 export default function ContactPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
-      <SectionHeader code="05" eyebrow="Contact" title="Parlons-en" />
+      <SectionHeader code="06" eyebrow="Contact" title="Parlons-en" />
       <p className="max-w-xl text-sm leading-relaxed text-[var(--text-on-ink-dim)]">
         Ouvert aux échanges autour des marchés des capitaux, de la gestion
         de portefeuille et de la finance corporative — coffee chats
@@ -16,9 +16,9 @@ export default function ContactPage() {
           <span className="text-signal">Courriel — </span>
           <a
             className="hover:text-signal"
-            href="mailto:benmessaoudhamza13@gmail.com"
+            href="mailto:hamza.ben-messaoud@hec.ca"
           >
-            benmessaoudhamza13@gmail.com
+            hamza.ben-messaoud@hec.ca
           </a>
         </p>
         <p>

@@ -45,7 +45,7 @@ export default function Home() {
           <div className="mb-10 flex items-end justify-between gap-4">
             <div>
               <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-signal">
-                01 — Projets
+                02 — Projets
               </p>
               <h2 className="mt-3 font-display text-3xl tracking-tight">
                 Sélection de projets
@@ -85,7 +85,7 @@ export default function Home() {
       {/* MACRO — dernière revue */}
       <section className="mx-auto max-w-6xl px-6 py-16">
         <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-signal">
-          02 — Revue macro
+          03 — Revue macro
         </p>
         <h2 className="mt-3 font-display text-3xl tracking-tight">
           Lecture de marché, chaque semaine
@@ -117,7 +117,7 @@ export default function Home() {
             className="group bg-ink p-8 transition-colors hover:bg-ink-2"
           >
             <p className="font-mono text-[11px] uppercase tracking-widest text-signal">
-              03 — Outils
+              04 — Outils
             </p>
             <h3 className="mt-3 font-display text-2xl">
               Dashboards &amp; instruments de marché
@@ -132,7 +132,7 @@ export default function Home() {
             className="group bg-ink p-8 transition-colors hover:bg-ink-2"
           >
             <p className="font-mono text-[11px] uppercase tracking-widest text-signal">
-              04 — Évaluations
+              05 — Évaluations
             </p>
             <h3 className="mt-3 font-display text-2xl">
               Évaluations d&rsquo;entreprises
