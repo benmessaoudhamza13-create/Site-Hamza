@@ -40,11 +40,11 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="flex aspect-[3/4] w-full items-center justify-center rounded-[4px] bg-gradient-to-br from-[#ece5d2] to-[#d3ddd0]">
-            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-dim">
-              Photo / portrait
-            </span>
-          </div>
+          <img
+            src="/portrait.jpeg"
+            alt="Hamza Ben Messaoud"
+            className="aspect-[4/5] w-full rounded object-cover"
+          />
         </div>
       </section>
 
