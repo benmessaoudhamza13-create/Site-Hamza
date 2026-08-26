@@ -33,32 +33,31 @@ export default function EvaluationsPage() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-16">
       <SectionHeader
-        code="05"
         eyebrow="Évaluations d'entreprises"
         title="Modèles, hypothèses et thèses complètes"
       />
-      <p className="mb-10 max-w-2xl text-sm leading-relaxed text-[var(--text-on-ink-dim)]">
+      <p className="mb-10 max-w-2xl text-sm leading-relaxed text-dim">
         Chaque évaluation ici inclut la méthode et les hypothèses, pas
         seulement la conclusion — l&rsquo;idée est de montrer le
         raisonnement, pas juste le chiffre final.
       </p>
-      <div className="divide-y rule-ink border-t border-b rule-ink">
+      <div className="divide-y rule border-t border-b rule">
         {evaluations.map((e) => (
           <div key={e.code} className="grid gap-3 py-6 md:grid-cols-[1fr_2fr] md:gap-8">
             <div>
-              <p className="font-mono text-[11px] uppercase tracking-widest text-signal">
+              <p className="font-mono text-[11px] uppercase tracking-widest text-accent">
                 {e.code}
               </p>
               <h3 className="mt-1 font-display text-xl">{e.entreprise}</h3>
-              <p className="mt-1 font-mono text-[10px] uppercase tracking-widest text-sage">
+              <p className="mt-1 font-mono text-[10px] uppercase tracking-widest text-accent">
                 {e.statut}
               </p>
             </div>
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--text-on-ink-dim)]">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-dim">
                 {e.methode}
               </p>
-              <p className="mt-2 text-sm leading-relaxed text-[var(--text-on-ink-dim)]">
+              <p className="mt-2 text-sm leading-relaxed text-dim">
                 {e.resume}
               </p>
             </div>

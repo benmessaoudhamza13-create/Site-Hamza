@@ -43,9 +43,9 @@ const implication = [
 export default function AProposPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
-      <SectionHeader code="01" eyebrow="À propos" title="Parcours" />
+      <SectionHeader eyebrow="À propos" title="Parcours" />
 
-      <p className="max-w-2xl text-sm leading-relaxed text-[var(--text-on-ink-dim)]">
+      <p className="max-w-2xl text-sm leading-relaxed text-dim">
         Je suis candidat à la maîtrise en finance de marché à HEC Montréal,
         après une double formation en finance et en économie appliquée. Ce
         parcours m&rsquo;a mené à deux stages consécutifs à la Banque
@@ -59,14 +59,14 @@ export default function AProposPage() {
       <div className="mt-9">
         <a
           href="/cv-hamza-benmessaoud.pdf"
-          className="inline-block border border-signal bg-signal px-5 py-3 font-mono text-xs uppercase tracking-widest text-ink transition-opacity hover:opacity-90"
+          className="inline-block rounded-[4px] bg-accent px-5 py-3 font-mono text-xs uppercase tracking-widest text-white transition-opacity hover:opacity-90"
         >
           Télécharger le CV (PDF)
         </a>
       </div>
 
-      <div className="mt-14 border-t rule-ink pt-10">
-        <p className="font-mono text-[11px] uppercase tracking-widest text-signal">
+      <div className="mt-14 border-t rule pt-10">
+        <p className="font-mono text-[11px] uppercase tracking-widest text-accent">
           Formation
         </p>
         <ul className="mt-6 space-y-6">
@@ -75,7 +75,7 @@ export default function AProposPage() {
               <h3 className="font-display text-xl leading-snug">
                 {f.diplome}
               </h3>
-              <p className="mt-1 font-mono text-xs uppercase tracking-wide text-[var(--text-on-ink-dim)]">
+              <p className="mt-1 font-mono text-xs uppercase tracking-wide text-dim">
                 {f.etablissement}
                 {f.periode ? ` — ${f.periode}` : ""}
               </p>
@@ -84,15 +84,15 @@ export default function AProposPage() {
         </ul>
       </div>
 
-      <div className="mt-14 border-t rule-ink pt-10">
-        <p className="font-mono text-[11px] uppercase tracking-widest text-signal">
+      <div className="mt-14 border-t rule pt-10">
+        <p className="font-mono text-[11px] uppercase tracking-widest text-accent">
           Expérience professionnelle
         </p>
         <ul className="mt-6 space-y-6">
           {experience.map((e) => (
             <li key={e.titre}>
               <h3 className="font-display text-xl leading-snug">{e.titre}</h3>
-              <p className="mt-1 font-mono text-xs uppercase tracking-wide text-[var(--text-on-ink-dim)]">
+              <p className="mt-1 font-mono text-xs uppercase tracking-wide text-dim">
                 {e.entreprise} — {e.periode}
               </p>
             </li>
@@ -100,8 +100,8 @@ export default function AProposPage() {
         </ul>
       </div>
 
-      <div className="mt-14 border-t rule-ink pt-10">
-        <p className="font-mono text-[11px] uppercase tracking-widest text-signal">
+      <div className="mt-14 border-t rule pt-10">
+        <p className="font-mono text-[11px] uppercase tracking-widest text-accent">
           Certifications & implication
         </p>
         <ul className="mt-6 space-y-6">
@@ -109,7 +109,7 @@ export default function AProposPage() {
             <li key={i.titre}>
               <h3 className="font-display text-xl leading-snug">{i.titre}</h3>
               {i.entreprise ? (
-                <p className="mt-1 font-mono text-xs uppercase tracking-wide text-[var(--text-on-ink-dim)]">
+                <p className="mt-1 font-mono text-xs uppercase tracking-wide text-dim">
                   {i.entreprise} — {i.periode}
                 </p>
               ) : null}

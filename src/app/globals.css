@@ -1,27 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #0e1524;
-  --ink-2: #141d31;
-  --paper: #f4f1e6;
-  --paper-2: #eae5d4;
-  --signal: #c7922f;
-  --sage: #6e8a78;
-  --rule-on-ink: rgba(236, 232, 218, 0.14);
-  --rule-on-paper: rgba(14, 21, 36, 0.14);
-  --text-on-ink: #ece8da;
-  --text-on-ink-dim: rgba(236, 232, 218, 0.62);
-  --text-on-paper: #1b2028;
-  --text-on-paper-dim: rgba(27, 32, 40, 0.6);
+  --paper: #f3efe6;
+  --card: #ffffff;
+  --text: #20241f;
+  --text-dim: rgba(32, 36, 31, 0.65);
+  --accent: #2f5c4a;
+  --line: rgba(32, 36, 31, 0.14);
 }
 
 @theme inline {
-  --color-ink: var(--ink);
-  --color-ink-2: var(--ink-2);
   --color-paper: var(--paper);
-  --color-paper-2: var(--paper-2);
-  --color-signal: var(--signal);
-  --color-sage: var(--sage);
+  --color-card: var(--card);
+  --color-text: var(--text);
+  --color-dim: var(--text-dim);
+  --color-accent: var(--accent);
+  --color-line: var(--line);
   --font-display: var(--font-fraunces);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-plex-mono);
@@ -36,23 +30,19 @@ html {
 }
 
 body {
-  background: var(--ink);
-  color: var(--text-on-ink);
+  background: var(--paper);
+  color: var(--text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: var(--signal);
-  color: var(--ink);
+  background: var(--accent);
+  color: var(--card);
 }
 
-.rule-ink {
-  border-color: var(--rule-on-ink);
-}
-
-.rule-paper {
-  border-color: var(--rule-on-paper);
+.rule {
+  border-color: var(--line);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -66,6 +56,6 @@ body {
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--signal);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }

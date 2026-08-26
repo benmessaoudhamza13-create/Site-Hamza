@@ -7,22 +7,21 @@ export default function OutilsPage() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-16">
       <SectionHeader
-        code="04"
         eyebrow="Outils & instruments"
         title="Dashboards construits pour mon propre usage"
       />
-      <p className="mb-10 max-w-2xl text-sm leading-relaxed text-[var(--text-on-ink-dim)]">
+      <p className="mb-10 max-w-2xl text-sm leading-relaxed text-dim">
         Des instruments que je construis pour suivre les marchés au
         quotidien — pas des démos, des outils que j&rsquo;utilise vraiment.
         Le premier suit le S&amp;P 500 ; d&rsquo;autres suivront (courbe des
         taux, spreads de crédit, indicateurs macro canadiens).
       </p>
       <SPDashboard />
-      <div className="mt-10 border rule-ink p-6">
-        <p className="font-mono text-[11px] uppercase tracking-widest text-sage">
+      <div className="mt-10 rounded-[4px] bg-card p-6 shadow-[0_1px_2px_rgba(32,36,31,0.06)]">
+        <p className="font-mono text-[11px] uppercase tracking-widest text-accent">
           Prochaine étape technique
         </p>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[var(--text-on-ink-dim)]">
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-dim">
           Ce graphique affiche des données d&rsquo;exemple. Pour le rendre
           vraiment en direct, la prochaine étape est de créer une route API
           Next.js qui interroge une source gratuite (Alpha Vantage,

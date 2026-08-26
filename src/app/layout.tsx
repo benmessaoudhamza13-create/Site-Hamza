@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
 import Nav from "@/components/Nav";
-import Ticker from "@/components/Ticker";
 import Footer from "@/components/Footer";
 import "./globals.css";
 
@@ -39,9 +38,8 @@ export default function RootLayout({
       lang="fr"
       className={`${fraunces.variable} ${inter.variable} ${plexMono.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col bg-ink text-[var(--text-on-ink)]">
+      <body className="min-h-full flex flex-col bg-paper text-text">
         <Nav />
-        <Ticker />
         <main className="flex-1">{children}</main>
         <Footer />
       </body>
