@@ -44,6 +44,7 @@ export const projets: Projet[] = [
       "Tests de robustesse : ARCH-LM, correction des écarts-types par la méthode HC3 de White",
     ],
     tags: ["ACP", "Facteurs macro", "Devises", "Économétrie"],
+    document: "/documents/modele-factoriel-devises.pdf",
   },
   {
     slug: "cad-usd-determinants",
@@ -60,6 +61,7 @@ export const projets: Projet[] = [
       "Revue de littérature académique intégrée sur le statut de pétro-devise du Canada",
     ],
     tags: ["Macro", "Devises", "Pétro-devise", "OLS"],
+    document: "/documents/cad-usd-determinants.pdf",
   },
   {
     slug: "blackberry-dcf",
@@ -76,6 +78,7 @@ export const projets: Projet[] = [
       "Défense du cours cible devant un comité d'experts",
     ],
     tags: ["DCF", "Comparables", "Equity research"],
+    document: "/documents/blackberry-dcf.pdf",
   },
   {
     slug: "dollarama-esg",
@@ -92,5 +95,23 @@ export const projets: Projet[] = [
       "2e place de la compétition",
     ],
     tags: ["ESG", "Equity research", "Pitch"],
+    document: "/documents/dollarama-esg.pdf",
+  },
+  {
+    slug: "gamestop-robinhood",
+    code: "P/06",
+    titre: "Analyse de la performance et du risque du trading retail (GameStop/Robinhood)",
+    periode: "M.Sc. — Méthodes économétriques en finance, HEC Montréal",
+    categorie: "Quantitatif",
+    resultat: "Rendement annualisé de 32,18 % (vs 21,86 % S&P 500), mais VaR 1 % de -8,21 % (vs -5,22 %)",
+    description:
+      "Construction d'un portefeuille synthétique répliquant le comportement collectif des utilisateurs Robinhood, comparaison de performance et de risque de queue contre le S&P 500, puis test de la prévisibilité de l'anomalie GameStop.",
+    details: [
+      "Portefeuille pondéré par le nombre de comptes détenteurs (données Robintrack), comparé au S&P 500",
+      "Ratio de Sharpe validé par bootstrap (5 000 itérations), VaR et Expected Shortfall à 1 % / 5 %",
+      "Modèle AR(4) testé sur le short squeeze GameStop : prévision de +1,25 %/jour vs réalité de +59,4 %/jour (25-28 janvier 2021)",
+    ],
+    tags: ["VaR", "Bootstrap", "Risque de queue", "Python"],
+    document: "/documents/gamestop-robinhood.pdf",
   },
 ];
