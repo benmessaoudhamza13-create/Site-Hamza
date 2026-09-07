@@ -26,7 +26,7 @@ export default function MacroPage() {
           >
             <div>
               <p className="font-mono text-[11px] uppercase tracking-widest text-accent">
-                {r.numero} — {r.date}
+                {r.date}
               </p>
               <h3 className="mt-1 font-display text-xl italic">{r.titre}</h3>
             </div>

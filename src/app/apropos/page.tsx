@@ -1,6 +1,6 @@
 import SectionHeader from "@/components/SectionHeader";
 
-export const metadata = { title: "À propos — Hamza Ben Messaoud" };
+export const metadata = { title: "Mon parcours — Hamza Ben Messaoud" };
 
 const formation = [
   {
@@ -40,10 +40,18 @@ const implication = [
   },
 ];
 
+const benevolat = [
+  "Fondation Marie-Vincent",
+  "Mission Bon Accueil",
+  "Moisson Rive-Sud",
+];
+
+const sport = ["Triathlon", "Hyrox", "Spartan Race"];
+
 export default function AProposPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
-      <SectionHeader eyebrow="À propos" title="Parcours" />
+      <SectionHeader eyebrow="À propos" title="Mon parcours" />
 
       <p className="max-w-2xl text-sm leading-relaxed text-dim">
         Je suis candidat à la maîtrise en finance de marché à HEC Montréal,
@@ -52,8 +60,7 @@ export default function AProposPage() {
         Nationale du Canada, d&rsquo;abord en optimisation continue puis en
         gestion de patrimoine, où j&rsquo;ai développé une lecture rigoureuse
         des marchés et des enjeux qui les traversent. Ce site rassemble mes
-        projets, mes lectures de marché et les outils que je construis en
-        marge de mes études.
+        projets et mes lectures de marché hebdomadaires.
       </p>
 
       <div className="mt-9">
@@ -116,6 +123,40 @@ export default function AProposPage() {
             </li>
           ))}
         </ul>
+      </div>
+
+      <div className="mt-14 border-t rule pt-10">
+        <p className="font-mono text-[11px] uppercase tracking-widest text-accent">
+          Au-delà de l&rsquo;académique
+        </p>
+        <div className="mt-6 grid gap-8 sm:grid-cols-2">
+          <div>
+            <h3 className="font-display text-xl leading-snug">Bénévolat</h3>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {benevolat.map((b) => (
+                <span
+                  key={b}
+                  className="rounded-[4px] border rule px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-dim"
+                >
+                  {b}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h3 className="font-display text-xl leading-snug">Sport</h3>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {sport.map((s) => (
+                <span
+                  key={s}
+                  className="rounded-[4px] border rule px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-dim"
+                >
+                  {s}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

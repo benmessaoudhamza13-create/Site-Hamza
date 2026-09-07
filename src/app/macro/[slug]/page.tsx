@@ -24,7 +24,7 @@ export default async function RevueDetailPage({
         ← Toutes les revues
       </Link>
       <p className="mt-8 font-mono text-[11px] uppercase tracking-widest text-accent">
-        {revue.numero} — {revue.date}
+        {revue.date}
       </p>
       <h1 className="mt-3 font-display text-4xl italic leading-tight">
         {revue.titre}

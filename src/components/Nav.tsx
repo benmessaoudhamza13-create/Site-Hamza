@@ -1,11 +1,9 @@
 import Link from "next/link";
 
 const links = [
-  { href: "/apropos", label: "À propos" },
+  { href: "/apropos", label: "Mon parcours" },
   { href: "/projets", label: "Projets" },
   { href: "/macro", label: "Revue macro" },
-  { href: "/outils", label: "Outils" },
-  { href: "/evaluations", label: "Évaluations" },
 ];
 
 export default function Nav() {
@@ -17,7 +15,7 @@ export default function Nav() {
             Hamza Ben Messaoud
           </span>
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-dim">
-            Finance de marché — HEC Montréal
+            Économie appliquée et finance — HEC Montréal
           </span>
         </Link>
         <nav className="flex flex-wrap items-center gap-x-6 gap-y-2">

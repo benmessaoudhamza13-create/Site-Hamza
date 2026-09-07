@@ -8,6 +8,7 @@ export type Projet = {
   description: string;
   details: string[];
   tags: string[];
+  document?: string;
 };
 
 export const projets: Projet[] = [
