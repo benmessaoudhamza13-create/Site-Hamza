@@ -16,14 +16,14 @@ export default function Home() {
               H.BM — Montréal, QC
             </p>
             <h1 className="mt-5 max-w-xl font-display text-4xl italic leading-tight tracking-tight md:text-6xl">
-              Comprendre pourquoi un actif est mal évalué.
+              Mon répertoire de projets et d&rsquo;accomplissements.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-dim">
               Candidat à la maîtrise en finance de marché à HEC Montréal, avec
               une double formation en finance et économie. Ce site rassemble
-              mes projets, mes lectures de marché hebdomadaires et les outils
-              que je construis en marge de mes études — la trace continue
-              d&rsquo;un travail d&rsquo;analyse, pas juste un CV figé.
+              mes projets et mes lectures de marché hebdomadaires — la trace
+              continue d&rsquo;un travail d&rsquo;analyse, pas juste un CV
+              figé.
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
               <Link
