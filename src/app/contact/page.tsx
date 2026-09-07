@@ -27,7 +27,7 @@ const contacts = [
 
 export default function ContactPage() {
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
+    <div className="mx-auto max-w-3xl px-6 py-16 md:py-20">
       <SectionHeader eyebrow="Contact" title="Parlons-en" />
       <p className="max-w-xl text-sm leading-relaxed text-dim">
         Ouvert aux échanges autour des marchés des capitaux, de la gestion
@@ -40,19 +40,16 @@ export default function ContactPage() {
             key={c.label}
             href={c.href}
             {...(c.external ? { target: "_blank", rel: "noreferrer" } : {})}
-            className="card group flex flex-col gap-4 p-6"
+            className="card group flex flex-col gap-5 p-6"
           >
-            <c.icon
-              className="text-accent"
-              size={22}
-              strokeWidth={1.75}
-              aria-hidden
-            />
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-accent transition-colors duration-200 ease group-hover:bg-accent group-hover:text-white">
+              <c.icon size={18} strokeWidth={1.75} aria-hidden />
+            </span>
             <div>
               <p className="font-mono text-[10px] uppercase tracking-widest text-dim">
                 {c.label}
               </p>
-              <p className="mt-1 break-words text-sm text-text transition-colors duration-200 ease group-hover:text-accent">
+              <p className="mt-1 break-words text-sm transition-colors duration-200 ease group-hover:text-accent">
                 {c.value}
               </p>
             </div>

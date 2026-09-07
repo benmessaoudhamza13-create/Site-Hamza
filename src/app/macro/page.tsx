@@ -6,7 +6,7 @@ export const metadata = { title: "Revue macro — Hamza Ben Messaoud" };
 
 export default function MacroPage() {
   return (
-    <div className="mx-auto max-w-6xl px-6 py-16">
+    <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
       <SectionHeader
         eyebrow="Mes revues macro"
         title="Ce qui a bougé, et pourquoi ça compte"
@@ -22,16 +22,21 @@ export default function MacroPage() {
           <Link
             key={r.slug}
             href={`/macro/${r.slug}`}
-            className="card group flex flex-col gap-2 p-6 md:flex-row md:items-baseline md:justify-between"
+            className="card group flex flex-col gap-3 p-6 md:flex-row md:items-center md:justify-between"
           >
             <div>
               <p className="font-mono text-[11px] uppercase tracking-widest text-accent">
                 {r.date}
               </p>
-              <h3 className="mt-1 font-display text-xl italic">{r.titre}</h3>
+              <h3 className="mt-1 font-display text-xl italic transition-colors duration-200 ease group-hover:text-accent">
+                {r.titre}
+              </h3>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-dim">
+                {r.resume}
+              </p>
             </div>
-            <span className="font-mono text-xs uppercase tracking-widest text-dim transition-colors duration-200 ease group-hover:text-accent">
-              Lire →
+            <span className="link-arrow shrink-0 font-mono text-xs uppercase tracking-widest text-dim transition-colors duration-200 ease group-hover:text-accent">
+              Lire <span className="arrow">→</span>
             </span>
           </Link>
         ))}

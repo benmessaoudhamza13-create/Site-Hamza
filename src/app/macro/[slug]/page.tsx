@@ -16,23 +16,23 @@ export default async function RevueDetailPage({
   if (!revue) return notFound();
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
+    <article className="mx-auto max-w-3xl px-6 py-16 md:py-20">
       <Link
         href="/macro"
-        className="font-mono text-xs uppercase tracking-widest text-dim transition-colors duration-200 ease hover:text-accent"
+        className="link-arrow back font-mono text-xs uppercase tracking-widest text-dim transition-colors duration-200 ease hover:text-accent"
       >
-        ← Toutes les revues
+        <span className="arrow">←</span> Toutes les revues
       </Link>
-      <p className="mt-8 font-mono text-[11px] uppercase tracking-widest text-accent">
+      <p className="mt-10 font-mono text-[11px] uppercase tracking-[0.25em] text-accent">
         {revue.date}
       </p>
-      <h1 className="mt-3 font-display text-4xl italic leading-tight">
+      <h1 className="mt-3 font-display text-4xl italic leading-[1.1] tracking-tight md:text-5xl">
         {revue.titre}
       </h1>
-      <p className="mt-5 text-lg leading-relaxed text-dim">{revue.resume}</p>
-      <div className="mt-10 space-y-10 border-t rule pt-10">
+      <p className="mt-6 text-lg leading-relaxed text-dim">{revue.resume}</p>
+      <div className="mt-12 space-y-10 border-t rule pt-10">
         {revue.sections.map((s, i) => (
-          <div key={i}>
+          <section key={i}>
             <h2 className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
               {s.titre}
             </h2>
@@ -44,9 +44,9 @@ export default async function RevueDetailPage({
                 </li>
               ))}
             </ul>
-          </div>
+          </section>
         ))}
       </div>
-    </div>
+    </article>
   );
 }

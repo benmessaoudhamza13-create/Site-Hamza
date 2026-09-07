@@ -41,8 +41,92 @@ body {
   color: var(--card);
 }
 
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
 .rule {
   border-color: var(--line);
+}
+
+/* Boutons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+}
+.btn-primary:hover {
+  background: #27503f;
+  border-color: #27503f;
+  box-shadow: 0 6px 16px rgba(47, 92, 74, 0.22);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--text);
+}
+.btn-secondary:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Liens avec flèche */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+.link-arrow .arrow {
+  display: inline-block;
+  transition: transform 180ms ease;
+}
+.link-arrow:hover .arrow {
+  transform: translateX(3px);
+}
+.link-arrow.back:hover .arrow {
+  transform: translateX(-3px);
+}
+
+/* Contenu déplié d'un accordéon */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+details[open] > .details-body {
+  animation: reveal 220ms ease;
 }
 
 .card {

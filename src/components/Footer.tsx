@@ -7,20 +7,25 @@ export default function Footer() {
         </p>
         <div className="flex flex-wrap gap-6 font-mono text-[11px] uppercase tracking-[0.2em] text-dim">
           <a
-            className="transition-colors hover:text-accent"
+            className="transition-colors duration-200 ease hover:text-accent"
             href="mailto:hamza.ben-messaoud@hec.ca"
           >
             Courriel
           </a>
           <a
-            className="transition-colors hover:text-accent"
+            className="transition-colors duration-200 ease hover:text-accent"
             href="https://linkedin.com/in/hamza-benmessaoud"
             target="_blank"
             rel="noreferrer"
           >
             LinkedIn
           </a>
-          <span>438 630-1061</span>
+          <a
+            className="transition-colors duration-200 ease hover:text-accent"
+            href="tel:+14386301061"
+          >
+            438 630-1061
+          </a>
         </div>
       </div>
     </footer>
