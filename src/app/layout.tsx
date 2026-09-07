@@ -25,7 +25,7 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Hamza Ben Messaoud — Économie appliquée et finance",
   description:
-    "Portfolio de Hamza Ben Messaoud, candidat à la maîtrise en finance de marché à HEC Montréal — projets, évaluations et revue macro hebdomadaire.",
+    "Portfolio de Hamza Ben Messaoud, candidat à la maîtrise en finance de marché à HEC Montréal — projets, évaluations et revue macro.",
 };
 
 export default function RootLayout({

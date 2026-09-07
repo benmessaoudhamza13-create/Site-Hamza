@@ -19,7 +19,7 @@ export default async function RevueDetailPage({
     <div className="mx-auto max-w-3xl px-6 py-16">
       <Link
         href="/macro"
-        className="font-mono text-xs uppercase tracking-widest text-dim hover:text-accent"
+        className="font-mono text-xs uppercase tracking-widest text-dim transition-colors duration-200 ease hover:text-accent"
       >
         ← Toutes les revues
       </Link>

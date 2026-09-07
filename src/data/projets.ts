@@ -9,9 +9,27 @@ export type Projet = {
   details: string[];
   tags: string[];
   document?: string;
+  credits?: string[];
+  statut?: "Complété" | "En cours";
 };
 
 export const projets: Projet[] = [
+  {
+    slug: "marches-predictifs-macro",
+    code: "P/00",
+    titre: "Marchés prédictifs comme outil de couverture macro",
+    periode: "Projet supervisé — HEC Montréal, avec le Prof. Anthony Sanford",
+    categorie: "Quantitatif",
+    statut: "En cours",
+    resultat: "En développement",
+    description:
+      "Exploration des marchés prédictifs (type Polymarket) comme signal ou outil de couverture macro sur les actifs tangibles : or, pétrole, taux.",
+    details: [
+      "Revue de la littérature sur les marchés prédictifs comme source d'information macro",
+      "Analyse de la stabilité et de la profondeur de marché de ces instruments comme limite potentielle à leur usage direct en couverture",
+    ],
+    tags: ["Marchés prédictifs", "Macro", "Actifs tangibles"],
+  },
   {
     slug: "defi-bnc",
     code: "P/01",
@@ -62,6 +80,7 @@ export const projets: Projet[] = [
     ],
     tags: ["Macro", "Devises", "Pétro-devise", "OLS"],
     document: "/documents/cad-usd-determinants.pdf",
+    credits: [], // TODO: noms à confirmer
   },
   {
     slug: "blackberry-dcf",

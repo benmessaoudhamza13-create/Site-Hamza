@@ -45,6 +45,17 @@ body {
   border-color: var(--line);
 }
 
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  box-shadow: 0 1px 3px rgba(32, 36, 31, 0.06), 0 8px 24px rgba(32, 36, 31, 0.05);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(32, 36, 31, 0.08), 0 16px 32px rgba(32, 36, 31, 0.08);
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.001ms !important;

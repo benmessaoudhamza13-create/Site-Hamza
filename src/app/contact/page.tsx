@@ -40,7 +40,7 @@ export default function ContactPage() {
             key={c.label}
             href={c.href}
             {...(c.external ? { target: "_blank", rel: "noreferrer" } : {})}
-            className="group flex flex-col gap-4 rounded-[4px] bg-card p-6 shadow-[0_1px_2px_rgba(32,36,31,0.06)] transition-shadow hover:shadow-[0_4px_16px_rgba(32,36,31,0.1)]"
+            className="card group flex flex-col gap-4 p-6"
           >
             <c.icon
               className="text-accent"
@@ -52,7 +52,7 @@ export default function ContactPage() {
               <p className="font-mono text-[10px] uppercase tracking-widest text-dim">
                 {c.label}
               </p>
-              <p className="mt-1 break-words text-sm text-text group-hover:text-accent">
+              <p className="mt-1 break-words text-sm text-text transition-colors duration-200 ease group-hover:text-accent">
                 {c.value}
               </p>
             </div>
