@@ -30,7 +30,7 @@ export default function Nav() {
           ))}
           <Link
             href="/contact"
-            className="rounded-[4px] border rule px-3 py-1 font-mono text-xs uppercase tracking-widest transition-colors hover:border-accent hover:text-accent"
+            className="rounded-lg border rule px-3 py-1 font-mono text-xs uppercase tracking-widest transition-colors duration-200 ease hover:border-accent hover:text-accent"
           >
             Contact
           </Link>

@@ -41,10 +41,15 @@ const benevolat = [
 
 const sport = ["Triathlon", "Hyrox", "Spartan Race"];
 
-const CV_PATH = "/cv-hamza-benmessaoud.pdf";
+const CV_PATHS = {
+  fr: "/documents/cv-fr.pdf",
+  en: "/documents/cv-en.pdf",
+} as const;
 
 export default function AProposPage() {
   const [cvOpen, setCvOpen] = useState(false);
+  const [cvLang, setCvLang] = useState<"fr" | "en">("fr");
+  const cvPath = CV_PATHS[cvLang];
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
@@ -111,7 +116,7 @@ export default function AProposPage() {
               {benevolat.map((b) => (
                 <span
                   key={b}
-                  className="rounded-[4px] border rule px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-dim"
+                  className="rounded-full border rule px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-dim"
                 >
                   {b}
                 </span>
@@ -124,7 +129,7 @@ export default function AProposPage() {
               {sport.map((s) => (
                 <span
                   key={s}
-                  className="rounded-[4px] border rule px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-dim"
+                  className="rounded-full border rule px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-dim"
                 >
                   {s}
                 </span>
@@ -144,13 +149,35 @@ export default function AProposPage() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between border-b rule px-4 py-3">
-              <a
-                href={CV_PATH}
-                download
-                className="font-mono text-xs uppercase tracking-widest text-accent transition-opacity duration-200 ease hover:opacity-80"
-              >
-                Télécharger
-              </a>
+              <div className="flex items-center gap-4">
+                <div className="flex overflow-hidden rounded-full border rule font-mono text-[10px] uppercase tracking-widest">
+                  <button
+                    type="button"
+                    onClick={() => setCvLang("fr")}
+                    className={`px-3 py-1 transition-colors duration-200 ease ${
+                      cvLang === "fr" ? "bg-accent text-white" : "text-dim hover:text-accent"
+                    }`}
+                  >
+                    FR
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCvLang("en")}
+                    className={`px-3 py-1 transition-colors duration-200 ease ${
+                      cvLang === "en" ? "bg-accent text-white" : "text-dim hover:text-accent"
+                    }`}
+                  >
+                    EN
+                  </button>
+                </div>
+                <a
+                  href={cvPath}
+                  download
+                  className="font-mono text-xs uppercase tracking-widest text-accent transition-opacity duration-200 ease hover:opacity-80"
+                >
+                  Télécharger
+                </a>
+              </div>
               <button
                 type="button"
                 onClick={() => setCvOpen(false)}
@@ -160,7 +187,7 @@ export default function AProposPage() {
                 <X size={20} />
               </button>
             </div>
-            <iframe src={CV_PATH} className="h-full w-full" />
+            <iframe src={cvPath} className="h-full w-full" />
           </div>
         </div>
       ) : null}

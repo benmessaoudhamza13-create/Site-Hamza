@@ -47,13 +47,23 @@ body {
 
 .card {
   background: var(--card);
+  border: 1px solid var(--line);
   border-radius: 14px;
   box-shadow: 0 1px 3px rgba(32, 36, 31, 0.06), 0 8px 24px rgba(32, 36, 31, 0.05);
-  transition: transform 180ms ease, box-shadow 180ms ease;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 .card:hover {
   transform: translateY(-2px);
+  border-color: rgba(47, 92, 74, 0.25);
   box-shadow: 0 4px 10px rgba(32, 36, 31, 0.08), 0 16px 32px rgba(32, 36, 31, 0.08);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

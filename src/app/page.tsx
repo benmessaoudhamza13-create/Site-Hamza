@@ -24,13 +24,13 @@ export default function Home() {
             <div className="mt-9 flex flex-wrap gap-4">
               <Link
                 href="/projets"
-                className="rounded-[4px] bg-accent px-5 py-3 font-mono text-xs uppercase tracking-widest text-white transition-opacity duration-200 ease hover:opacity-90"
+                className="rounded-lg bg-accent px-5 py-3 font-mono text-xs uppercase tracking-widest text-white transition-opacity duration-200 ease hover:opacity-90"
               >
                 Voir les projets
               </Link>
               <Link
                 href="/macro"
-                className="rounded-[4px] border border-text px-5 py-3 font-mono text-xs uppercase tracking-widest transition-colors duration-200 ease hover:border-accent hover:text-accent"
+                className="rounded-lg border border-text px-5 py-3 font-mono text-xs uppercase tracking-widest transition-colors duration-200 ease hover:border-accent hover:text-accent"
               >
                 Revue macro
               </Link>
@@ -38,7 +38,7 @@ export default function Home() {
           </div>
           <svg
             viewBox="0 0 400 500"
-            className="aspect-[4/5] w-full rounded-[14px]"
+            className="card aspect-[4/5] w-full overflow-hidden"
             xmlns="http://www.w3.org/2000/svg"
           >
             <defs>
@@ -46,13 +46,22 @@ export default function Home() {
                 <stop offset="0%" stopColor="#e8e2d0" />
                 <stop offset="100%" stopColor="#cfd8c9" />
               </linearGradient>
+              <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#2f5c4a" stopOpacity="0.22" />
+                <stop offset="100%" stopColor="#2f5c4a" stopOpacity="0" />
+              </linearGradient>
             </defs>
-            <rect width="400" height="500" fill="url(#bgGrad)" />
+            <rect width="400" height="500" fill="url(#bgGrad)" rx="14" />
             <g stroke="rgba(32,36,31,0.08)" strokeWidth="1">
               <line x1="0" y1="125" x2="400" y2="125" />
               <line x1="0" y1="250" x2="400" y2="250" />
               <line x1="0" y1="375" x2="400" y2="375" />
             </g>
+            <path
+              d="M 40 380 L 120 340 L 180 360 L 240 260 L 300 220 L 360 120 L 360 460 L 40 460 Z"
+              fill="url(#areaGrad)"
+              stroke="none"
+            />
             <path
               d="M 40 380 L 120 340 L 180 360 L 240 260 L 300 220 L 360 120"
               fill="none"
@@ -61,6 +70,15 @@ export default function Home() {
               strokeLinecap="round"
               strokeLinejoin="round"
             />
+            {[
+              [40, 380],
+              [120, 340],
+              [180, 360],
+              [240, 260],
+              [300, 220],
+            ].map(([cx, cy]) => (
+              <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="4" fill="#f3efe6" stroke="#2f5c4a" strokeWidth="2" />
+            ))}
             <circle cx="360" cy="120" r="6" fill="#2f5c4a" />
           </svg>
         </div>
@@ -85,26 +103,28 @@ export default function Home() {
               Tout voir →
             </Link>
           </div>
-          <div className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2">
-            {highlights.map((p) => (
-              <Link
-                key={p.slug}
-                href={`/projets#${p.slug}`}
-                className="card group flex w-72 shrink-0 snap-start flex-col justify-between gap-6 p-6"
-              >
-                <div>
-                  <p className="font-mono text-[11px] uppercase tracking-widest text-accent">
-                    {p.categorie}
+          <div className="[mask-image:linear-gradient(to_right,transparent,black_16px,black_calc(100%-16px),transparent)]">
+            <div className="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2">
+              {highlights.map((p) => (
+                <Link
+                  key={p.slug}
+                  href={`/projets#${p.slug}`}
+                  className="card group flex w-72 shrink-0 snap-start flex-col justify-between gap-6 p-6"
+                >
+                  <div>
+                    <span className="inline-block rounded-full border rule px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-accent">
+                      {p.categorie}
+                    </span>
+                    <h3 className="mt-4 font-display text-xl leading-snug">
+                      {p.titre}
+                    </h3>
+                  </div>
+                  <p className="font-mono text-[11px] uppercase tracking-wide text-accent">
+                    {p.resultat}
                   </p>
-                  <h3 className="mt-3 font-display text-xl leading-snug">
-                    {p.titre}
-                  </h3>
-                </div>
-                <p className="font-mono text-[11px] uppercase tracking-wide text-accent">
-                  {p.resultat}
-                </p>
-              </Link>
-            ))}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -59,7 +59,7 @@ export default function ProjetsPage() {
                 {p.tags.map((t) => (
                   <span
                     key={t}
-                    className="rounded-[4px] border rule px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-dim"
+                    className="rounded-full border rule px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-dim"
                   >
                     {t}
                   </span>
@@ -74,7 +74,7 @@ export default function ProjetsPage() {
                 <div className="mt-5">
                   <iframe
                     src={p.document}
-                    className="h-[500px] w-full rounded border rule"
+                    className="h-[500px] w-full rounded-lg border rule"
                   />
                   <a
                     href={p.document}

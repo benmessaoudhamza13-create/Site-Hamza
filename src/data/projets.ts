@@ -46,6 +46,7 @@ export const projets: Projet[] = [
       "Résultat d'équipe : alpha de 3 % généré via couverture Delta-Gamma sur la poche Alternatifs, suivi VaR et tracking error",
     ],
     tags: ["Allocation d'actifs", "Marchés émergents", "Gouvernance", "Macro discrétionnaire"],
+    credits: ["la cohorte de stagiaires 2025 FBNGP"],
   },
   {
     slug: "modele-factoriel-devises",
@@ -80,7 +81,7 @@ export const projets: Projet[] = [
     ],
     tags: ["Macro", "Devises", "Pétro-devise", "OLS"],
     document: "/documents/cad-usd-determinants.pdf",
-    credits: [], // TODO: noms à confirmer
+    credits: ["Louis-Thomas", "Alexis", "William"],
   },
   {
     slug: "blackberry-dcf",
