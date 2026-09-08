@@ -25,8 +25,7 @@ export const ui = {
     ),
     ctaProjects: l("Voir les projets", "See the projects"),
     ctaMacro: l("Revue macro", "Macro review"),
-    chartCaption: l("Courbe illustrative", "Illustrative curve"),
-    chartHint: l("Survolez la courbe", "Hover the curve"),
+    place: l("Montréal, QC", "Montréal, QC"),
   },
   home: {
     selectionEyebrow: l("Sélection", "Selected work"),

@@ -6,7 +6,7 @@ import { projets } from "@/data/projets";
 import { revuesMacro } from "@/data/macro";
 import { useT } from "@/lib/i18n";
 import { ui } from "@/i18n/ui";
-import HeroChart from "@/components/HeroChart";
+import Skyline from "@/components/Skyline";
 import ProjectSketch from "@/components/ProjectSketch";
 
 const highlights = projets.filter((p) => p.statut !== "En cours").slice(0, 6);
@@ -18,30 +18,34 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="mx-auto max-w-6xl px-6 pb-20 pt-14 md:pb-24 md:pt-24">
-        <div className="grid gap-12 md:grid-cols-[1.2fr_0.8fr] md:items-center">
-          <div>
-            <h1 className="max-w-xl font-display text-4xl italic leading-[1.1] tracking-tight md:text-6xl">
-              {t(ui.hero.title)}
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-dim">
-              {t(ui.hero.lead)}
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Link href="/projets" className="btn btn-primary">
-                {t(ui.hero.ctaProjects)}
-              </Link>
-              <Link href="/macro" className="btn btn-secondary">
-                {t(ui.hero.ctaMacro)}
-              </Link>
-            </div>
+      <section className="relative overflow-hidden">
+        <div className="mx-auto max-w-6xl px-6 pt-16 md:pt-24">
+          <span aria-hidden className="mb-7 block h-px w-14 bg-gold" />
+          <h1 className="max-w-3xl font-display text-4xl italic leading-[1.08] tracking-tight md:text-6xl lg:text-7xl">
+            {t(ui.hero.title)}
+          </h1>
+          <p className="mt-7 max-w-2xl text-lg leading-relaxed text-dim md:text-xl">
+            {t(ui.hero.lead)}
+          </p>
+          <div className="mt-9 flex flex-wrap items-center gap-3">
+            <Link href="/projets" className="btn btn-primary">
+              {t(ui.hero.ctaProjects)}
+            </Link>
+            <Link href="/macro" className="btn btn-secondary">
+              {t(ui.hero.ctaMacro)}
+            </Link>
+            <span className="ml-1 hidden font-mono text-[11px] uppercase tracking-[0.25em] text-dim sm:inline">
+              — {t(ui.hero.place)}
+            </span>
           </div>
-          <HeroChart />
+        </div>
+        <div className="pointer-events-none relative mx-auto -mt-6 max-w-7xl md:-mt-16">
+          <Skyline className="skyline w-full opacity-[0.55]" />
         </div>
       </section>
 
       {/* SÉLECTION DE PROJETS */}
-      <section className="border-t rule bg-paper/60">
+      <section className="border-t rule bg-paper-2/70">
         <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
           <div className="mb-10 flex items-end justify-between gap-4">
             <div>
@@ -112,7 +116,7 @@ export default function Home() {
       </section>
 
       {/* REVUE MACRO */}
-      <section className="border-t rule bg-card">
+      <section className="border-t rule bg-paper/70">
         <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
           <div className="mb-10 flex items-end justify-between gap-4">
             <div>
@@ -134,11 +138,11 @@ export default function Home() {
           <div className="grid gap-5 md:grid-cols-[1.4fr_1fr]">
             <Link
               href={`/macro/${featured.slug}`}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-[14px] bg-accent p-7 text-white transition-transform duration-200 hover:-translate-y-0.5 md:p-9"
+              className="featured group relative flex flex-col justify-between overflow-hidden rounded-[14px] p-7 transition-transform duration-200 hover:-translate-y-0.5 md:p-9"
             >
               <span className="pointer-events-none absolute -right-10 -top-10 h-48 w-48 rounded-full bg-white/[0.06] transition-transform duration-500 group-hover:scale-125" />
               <div>
-                <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-white/70">
+                <p className="eyebrow font-mono text-[11px] uppercase tracking-[0.25em]">
                   {t(ui.home.featured)} — {t(featured.date)}
                 </p>
                 <h3 className="mt-4 font-display text-2xl italic leading-snug md:text-3xl">

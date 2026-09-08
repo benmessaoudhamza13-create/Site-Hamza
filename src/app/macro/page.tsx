@@ -53,10 +53,10 @@ export default function MacroPage() {
       {showLatest ? (
         <Link
           href={`/macro/${latest.slug}`}
-          className="group relative block overflow-hidden rounded-[14px] bg-accent p-7 text-white transition-transform duration-200 hover:-translate-y-0.5 md:p-9"
+          className="featured group relative block overflow-hidden rounded-[14px] p-7 transition-transform duration-200 hover:-translate-y-0.5 md:p-9"
         >
           <span className="pointer-events-none absolute -right-10 -top-10 h-56 w-56 rounded-full bg-white/[0.06] transition-transform duration-500 group-hover:scale-125" />
-          <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-white/70">
+          <p className="eyebrow font-mono text-[11px] uppercase tracking-[0.25em]">
             {t(ui.macro.latest)} — {t(latest.date)}
           </p>
           <h3 className="mt-4 max-w-2xl font-display text-2xl italic leading-snug md:text-3xl">

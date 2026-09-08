@@ -1,21 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #f3efe6;
-  --card: #ffffff;
-  --text: #20241f;
-  --text-dim: rgba(32, 36, 31, 0.65);
+  --paper: #f4efe4;
+  --paper-2: #faf7f0;
+  --card: #fffdf9;
+  --text: #1f2420;
+  --text-dim: rgba(31, 36, 32, 0.66);
   --accent: #2f5c4a;
-  --accent-deep: #27503f;
-  --line: rgba(32, 36, 31, 0.14);
+  --accent-deep: #22483a;
+  --gold: #b8903f;
+  --line: rgba(31, 36, 32, 0.13);
 }
 
 @theme inline {
   --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
   --color-card: var(--card);
   --color-text: var(--text);
   --color-dim: var(--text-dim);
   --color-accent: var(--accent);
+  --color-gold: var(--gold);
   --color-line: var(--line);
   --font-display: var(--font-playfair);
   --font-sans: var(--font-inter);
@@ -216,19 +220,23 @@ p {
   --py: 0px;
 }
 .sketch {
-  color: var(--text);
-  opacity: 0.07;
+  color: var(--accent);
+  opacity: 0.1;
   stroke: currentColor;
   stroke-width: 1.4;
   filter: url(#pencil);
   transform: translate(var(--px), var(--py));
   transition: transform 400ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
+.sketch-gold {
+  color: var(--gold);
+  opacity: 0.16;
+}
 .sketch:nth-of-type(odd) {
   transform: translate(calc(var(--px) * -1), calc(var(--py) * -1));
 }
 
-/* Graphique du hero : la courbe se trace à l'arrivée */
+/* Skyline du hero : se dessine à l'arrivée */
 @keyframes draw {
   from {
     stroke-dashoffset: 1;
@@ -237,30 +245,24 @@ p {
     stroke-dashoffset: 0;
   }
 }
-.hero-line {
+.skyline path,
+.skyline circle {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  animation: draw 1.8s cubic-bezier(0.6, 0, 0.2, 1) 0.2s forwards;
+  animation: draw 2.4s cubic-bezier(0.6, 0, 0.2, 1) 0.15s forwards;
 }
-.hero-area {
-  opacity: 0;
-  animation: fade-in 0.8s ease 1.4s forwards;
+.skyline {
+  color: var(--accent);
+  mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
 }
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.6;
-  }
-  50% {
-    transform: scale(1.6);
-    opacity: 0;
-  }
+
+/* Carte « à la une » */
+.featured {
+  background: linear-gradient(135deg, var(--accent-deep) 0%, var(--accent) 70%, #3a6b58 100%);
+  color: #fff;
 }
-.hero-pulse {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: pulse 2.2s ease-out infinite;
+.featured .eyebrow {
+  color: #d9c08a;
 }
 
 /* Frise « serpent » */
@@ -384,11 +386,9 @@ p {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-  .hero-line {
+  .skyline path,
+  .skyline circle {
     stroke-dashoffset: 0;
-  }
-  .hero-area {
-    opacity: 1;
   }
 }
 

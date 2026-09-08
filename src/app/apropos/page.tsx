@@ -231,7 +231,7 @@ export default function AProposPage() {
                   aria-hidden
                   style={{ "--nx": `${x0}%` } as React.CSSProperties}
                   className={`timeline-node absolute left-0 top-0 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full ring-4 ring-paper md:left-[var(--nx)] ${
-                    step.current ? "bg-accent" : "border-2 border-accent bg-card"
+                    step.current ? "bg-gold" : "border-2 border-accent bg-card"
                   }`}
                 />
 
@@ -250,7 +250,7 @@ export default function AProposPage() {
                         {t(step.titre)}
                       </h3>
                       {step.current ? (
-                        <span className="rounded-full bg-accent/10 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-accent">
+                        <span className="rounded-full bg-gold/15 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-gold">
                           {t(ui.apropos.current)}
                         </span>
                       ) : null}
