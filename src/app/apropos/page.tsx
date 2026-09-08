@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Award } from "lucide-react";
+import { Award, ChevronDown, Mouse } from "lucide-react";
 import SectionHeader from "@/components/SectionHeader";
 import CvButton from "@/components/CvButton";
 import { useT, type L } from "@/lib/i18n";
@@ -125,17 +125,79 @@ const timeline: Etape[] = [
   },
 ];
 
-const analyse: L<string[]> = {
-  fr: ["DCF", "Multiples", "Analyse macro", "Gestion de portefeuille", "Analyse quantitative"],
-  en: ["DCF", "Multiples", "Macro analysis", "Portfolio management", "Quantitative analysis"],
-};
-const outils = ["Python", "R", "Bloomberg Terminal", "Excel VBA"];
+/* Compétences avec, au survol, où elles ont été mises en œuvre sur ce site.
+   (Descriptions factuelles ; à enrichir si tu veux personnaliser.) */
+const analyse: { nom: string; detail: L }[] = [
+  {
+    nom: "DCF",
+    detail: {
+      fr: "Actualisation des flux de trésorerie — stock pitchs BlackBerry et Dollarama.",
+      en: "Discounted cash flow — BlackBerry and Dollarama stock pitches.",
+    },
+  },
+  {
+    nom: "Multiples",
+    detail: {
+      fr: "Comparables boursiers en appui du DCF (BlackBerry).",
+      en: "Trading comparables alongside the DCF (BlackBerry).",
+    },
+  },
+  {
+    nom: "Analyse macro",
+    detail: {
+      fr: "Thèses macro au Fonds BNI-HEC ; revues macro publiées ici.",
+      en: "Macro theses at the BNI-HEC Fund; macro reviews published here.",
+    },
+  },
+  {
+    nom: "Gestion de portefeuille",
+    detail: {
+      fr: "Défi de gestion d'actifs BNC — allocation marchés émergents, VaR, tracking error.",
+      en: "NBC Asset Management Challenge — EM allocation, VaR, tracking error.",
+    },
+  },
+  {
+    nom: "Analyse quantitative",
+    detail: {
+      fr: "ACP sur devises, OLS robuste (CAD/USD), bootstrap et VaR (GameStop/Robinhood).",
+      en: "PCA on currencies, robust OLS (CAD/USD), bootstrap and VaR (GameStop/Robinhood).",
+    },
+  },
+];
+const outils: { nom: string; detail: L }[] = [
+  {
+    nom: "Python",
+    detail: {
+      fr: "Bootstrap 5 000 itérations, VaR / Expected Shortfall, modèle AR(4).",
+      en: "5,000-iteration bootstrap, VaR / Expected Shortfall, AR(4) model.",
+    },
+  },
+  {
+    nom: "R",
+    detail: {
+      fr: "Économétrie appliquée : régressions, diagnostics, ACP.",
+      en: "Applied econometrics: regressions, diagnostics, PCA.",
+    },
+  },
+  {
+    nom: "Bloomberg Terminal",
+    detail: {
+      fr: "Certification Bloomberg Market Concepts (BMC).",
+      en: "Bloomberg Market Concepts (BMC) certification.",
+    },
+  },
+  {
+    nom: "Excel VBA",
+    detail: {
+      fr: "Modélisation de rentabilité d'un portefeuille de 30 000+ comptes (BNC, 2024).",
+      en: "Profitability model for a 30,000+ account portfolio (NBC, 2024).",
+    },
+  },
+];
 const certifications = ["Bloomberg Market Concepts (BMC)"];
 
 const leadership: { titre: L; detail?: L }[] = [
-  {
-    titre: { fr: "Ambassadeur HEC (MaCarrière)", en: "HEC Ambassador (MaCarrière)" },
-  },
+  { titre: { fr: "Ambassadeur HEC (MaCarrière)", en: "HEC Ambassador (MaCarrière)" } },
   {
     titre: {
       fr: "Président de groupe, Chargé de visibilité — ASGC",
@@ -147,8 +209,45 @@ const leadership: { titre: L; detail?: L }[] = [
     detail: { fr: "38 000 $ amassés", en: "$38,000 raised" },
   },
 ];
-const benevolat = ["Fondation Marie-Vincent", "Mission Bon Accueil", "Moisson Rive-Sud"];
-const sport = ["Triathlon", "Hyrox", "Spartan Race"];
+/* Organismes et disciplines : description générale de chacun au survol. */
+const benevolat: { nom: string; detail: L }[] = [
+  {
+    nom: "Fondation Marie-Vincent",
+    detail: {
+      fr: "Soutien aux enfants et adolescents victimes de violence sexuelle.",
+      en: "Support for children and teens who are victims of sexual violence.",
+    },
+  },
+  {
+    nom: "Mission Bon Accueil",
+    detail: {
+      fr: "Aide alimentaire et services aux personnes en situation de précarité à Montréal.",
+      en: "Food aid and services for people in precarious situations in Montréal.",
+    },
+  },
+  {
+    nom: "Moisson Rive-Sud",
+    detail: {
+      fr: "Banque alimentaire de la Montérégie.",
+      en: "Food bank serving the Montérégie region.",
+    },
+  },
+];
+const sport: { nom: string; detail: L }[] = [
+  { nom: "Triathlon", detail: { fr: "Natation, vélo, course — enchaînés.", en: "Swim, bike, run — back to back." } },
+  { nom: "Hyrox", detail: { fr: "Course fitness : 8 km entrecoupés de 8 ateliers.", en: "Fitness racing: 8 km split by 8 workout stations." } },
+  { nom: "Spartan Race", detail: { fr: "Course à obstacles.", en: "Obstacle course racing." } },
+];
+
+function TipChip({ nom, detail }: { nom: string; detail: L }) {
+  const t = useT();
+  return (
+    <span tabIndex={0} className="tip chip chip-hover cursor-default">
+      {nom}
+      <span className="tip-bubble tip-wide px-3 py-2">{t(detail)}</span>
+    </span>
+  );
+}
 
 export default function AProposPage() {
   const t = useT();
@@ -166,9 +265,12 @@ export default function AProposPage() {
 
       {/* FRISE SERPENTINE */}
       <section className="mt-16 border-t rule pt-12">
-        <div className="mb-10 flex flex-wrap items-baseline justify-between gap-3" data-reveal>
+        <div className="mb-10 flex flex-wrap items-center justify-between gap-3" data-reveal>
           <p className="eyebrow">{t(ui.apropos.timelineEyebrow)}</p>
-          <p className="label hidden md:block">{t(ui.apropos.timelineHint)}</p>
+          <p className="label hidden items-center gap-2 md:flex">
+            <Mouse size={14} strokeWidth={1.6} aria-hidden className="bob" />
+            {t(ui.apropos.scrollHint)} · {t(ui.apropos.timelineHint)}
+          </p>
         </div>
 
         <ol className="relative">
@@ -225,37 +327,37 @@ export default function AProposPage() {
                 />
 
                 {/* Carte */}
-                <div
-                  className={`pl-7 pt-0 md:pl-0 ${left ? "md:col-start-1 md:pr-8" : "md:col-start-2 md:pl-8"}`}
-                >
+                <div className={`pl-7 md:pl-0 ${left ? "md:col-start-1 md:pr-8" : "md:col-start-2 md:pl-8"}`}>
                   <button
                     type="button"
                     onClick={() => setOpenStep(isOpen ? null : i)}
                     aria-expanded={isOpen}
-                    className="card card-static block w-full p-5 text-left transition-[border-color,box-shadow] duration-200 hover:border-accent/30 md:-mt-3 md:p-6"
+                    className="timeline-card card card-static block w-full p-5 text-left md:-mt-3 md:p-6"
                   >
                     <span className="flex flex-wrap items-center gap-2">
-                      <h3 className="font-display text-lg leading-snug md:text-xl">
-                        {t(step.titre)}
-                      </h3>
-                      {step.current ? (
-                        <span className="chip chip-gold">{t(ui.apropos.current)}</span>
-                      ) : null}
+                      <h3 className="font-display text-lg leading-snug md:text-xl">{t(step.titre)}</h3>
+                      {step.current ? <span className="chip chip-gold">{t(ui.apropos.current)}</span> : null}
                     </span>
                     <span className="meta mt-1.5 block text-dim">{t(step.sousTitre)}</span>
                     {step.details ? (
-                      <span className="timeline-detail">
-                        <span className="block">
-                          <ul className="mt-4 space-y-2 border-t rule pt-4">
-                            {t(step.details).map((d, j) => (
-                              <li key={j} className="flex gap-2 text-sm leading-relaxed text-dim">
-                                <span className="text-accent">—</span>
-                                <span>{d}</span>
-                              </li>
-                            ))}
-                          </ul>
+                      <>
+                        <span className="detail-hint label mt-3 flex items-center gap-1 text-accent">
+                          {t(ui.apropos.detailHint)}
+                          <ChevronDown size={12} strokeWidth={1.8} aria-hidden />
                         </span>
-                      </span>
+                        <span className="timeline-detail">
+                          <span className="block">
+                            <ul className="mt-4 space-y-2 border-t rule pt-4">
+                              {t(step.details).map((d, j) => (
+                                <li key={j} className="flex gap-2 text-sm leading-relaxed text-dim">
+                                  <span className="text-gold">—</span>
+                                  <span>{d}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </span>
+                        </span>
+                      </>
                     ) : null}
                   </button>
                 </div>
@@ -272,10 +374,8 @@ export default function AProposPage() {
           <div>
             <h3 className="font-display text-lg">{t(ui.apropos.analysis)}</h3>
             <div className="mt-3 flex flex-wrap gap-2">
-              {t(analyse).map((s) => (
-                <span key={s} className="chip chip-hover">
-                  {s}
-                </span>
+              {analyse.map((s) => (
+                <TipChip key={s.nom} nom={s.nom} detail={s.detail} />
               ))}
             </div>
           </div>
@@ -283,9 +383,7 @@ export default function AProposPage() {
             <h3 className="font-display text-lg">{t(ui.apropos.tools)}</h3>
             <div className="mt-3 flex flex-wrap gap-2">
               {outils.map((s) => (
-                <span key={s} className="chip chip-hover">
-                  {s}
-                </span>
+                <TipChip key={s.nom} nom={s.nom} detail={s.detail} />
               ))}
             </div>
           </div>
@@ -293,13 +391,9 @@ export default function AProposPage() {
             <h3 className="font-display text-lg">{t(ui.apropos.languages)}</h3>
             <div className="mt-3 flex flex-wrap gap-2">
               {(["fr", "ar", "en", "es"] as const).map((code) => (
-                <span
-                  key={code}
-                  tabIndex={0}
-                  className="tip chip chip-hover cursor-default"
-                >
+                <span key={code} tabIndex={0} className="tip chip chip-hover cursor-default">
                   {ui.langs[code].code} · {t(ui.langs[code].level)}
-                  <span className="tip-bubble px-3 py-1.5 font-display text-base normal-case tracking-normal text-text">
+                  <span className="tip-bubble px-3 py-1.5 font-display text-base normal-case tracking-normal">
                     {ui.langs[code].greeting}
                   </span>
                 </span>
@@ -311,7 +405,7 @@ export default function AProposPage() {
             <ul className="mt-3 space-y-2">
               {certifications.map((c) => (
                 <li key={c} className="flex items-center gap-2 text-sm">
-                  <Award size={16} strokeWidth={1.75} aria-hidden className="text-accent" />
+                  <Award size={16} strokeWidth={1.6} aria-hidden className="text-gold" />
                   {c}
                 </li>
               ))}
@@ -329,9 +423,7 @@ export default function AProposPage() {
             <ul className="mt-4 space-y-3">
               {leadership.map((item, i) => (
                 <li key={i} className="group/l text-sm">
-                  <span className="block transition-colors duration-200 group-hover/l:text-accent">
-                    {t(item.titre)}
-                  </span>
+                  <span className="block transition-colors duration-200 group-hover/l:text-accent">{t(item.titre)}</span>
                   {item.detail ? <span className="label block">{t(item.detail)}</span> : null}
                 </li>
               ))}
@@ -341,9 +433,7 @@ export default function AProposPage() {
             <h3 className="font-display text-lg">{t(ui.apropos.benevolat)}</h3>
             <div className="mt-4 flex flex-wrap gap-2">
               {benevolat.map((b) => (
-                <span key={b} className="chip chip-hover">
-                  {b}
-                </span>
+                <TipChip key={b.nom} nom={b.nom} detail={b.detail} />
               ))}
             </div>
           </div>
@@ -351,15 +441,12 @@ export default function AProposPage() {
             <h3 className="font-display text-lg">{t(ui.apropos.sport)}</h3>
             <div className="mt-4 flex flex-wrap gap-2">
               {sport.map((s) => (
-                <span key={s} className="chip chip-hover">
-                  {s}
-                </span>
+                <TipChip key={s.nom} nom={s.nom} detail={s.detail} />
               ))}
             </div>
           </div>
         </div>
       </section>
-
     </div>
   );
 }

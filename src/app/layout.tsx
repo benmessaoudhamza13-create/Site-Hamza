@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter, IBM_Plex_Mono } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import Sketches from "@/components/Sketches";
+import Backdrop from "@/components/Backdrop";
 import RevealObserver from "@/components/RevealObserver";
 import PageTransition from "@/components/PageTransition";
 import { LangProvider } from "@/lib/i18n";
@@ -44,7 +44,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-paper text-text">
         <LangProvider>
-          <Sketches />
+          <Backdrop />
           <RevealObserver />
           <div className="relative z-10 flex min-h-full flex-1 flex-col">
             <Nav />

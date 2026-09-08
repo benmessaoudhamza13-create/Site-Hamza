@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
-import { X, Download, ExternalLink } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { X, Download, ExternalLink, Printer, Share2, Check } from "lucide-react";
 import { useT } from "@/lib/i18n";
 import { ui } from "@/i18n/ui";
 
@@ -20,6 +20,8 @@ export default function PdfModal({
   toolbar?: React.ReactNode;
 }) {
   const t = useT();
+  const frame = useRef<HTMLIFrameElement>(null);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     if (!open) return;
@@ -37,73 +39,101 @@ export default function PdfModal({
 
   if (!open) return null;
 
+  // Masque la barre d'outils du lecteur PDF intégré (Chrome/Edge) pour un
+  // rendu « document » plutôt que « fichier ».
+  const viewerSrc = `${src}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`;
+
+  const print = () => {
+    try {
+      const w = frame.current?.contentWindow;
+      if (w) {
+        w.focus();
+        w.print();
+        return;
+      }
+    } catch {}
+    window.open(src, "_blank", "noopener");
+  };
+
+  const share = async () => {
+    const url = new URL(src, window.location.origin).toString();
+    try {
+      if (navigator.share) {
+        await navigator.share({ title, url });
+        return;
+      }
+    } catch {}
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {}
+  };
+
   return (
     <div
-      className="fade-in fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-3 backdrop-blur-sm md:p-6"
+      className="fade-in fixed inset-0 z-50 flex items-center justify-center bg-[rgba(14,28,23,0.72)] p-3 backdrop-blur-md md:p-8"
       onClick={onClose}
     >
       <div
         role="dialog"
         aria-modal="true"
         aria-label={title}
-        className="rise-in relative flex h-[88vh] w-full max-w-4xl flex-col overflow-hidden rounded-[var(--radius-card)] border rule bg-card shadow-[var(--shadow-modal)]"
+        className="rise-in relative flex h-[92vh] w-full max-w-3xl flex-col overflow-hidden rounded-[var(--radius-card)] bg-paper-2 shadow-[var(--shadow-modal)]"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between gap-4 border-b rule px-4 py-3">
+        {/* Barre sobre : titre à gauche, actions à droite */}
+        <div className="flex items-center justify-between gap-4 border-b rule bg-card/70 px-4 py-2.5 backdrop-blur-sm md:px-5">
           <div className="flex min-w-0 items-center gap-4">
             {toolbar}
             <p className="truncate font-display text-base">{title}</p>
           </div>
-          <div className="flex shrink-0 items-center gap-1">
-            <a
-              href={src}
-              download
-              title={t(ui.pdf.download)}
-              aria-label={t(ui.pdf.download)}
-              className="rounded-full p-2 text-dim transition-colors duration-200 ease hover:bg-accent/10 hover:text-accent"
-            >
-              <Download size={17} strokeWidth={1.75} />
+          <div className="flex shrink-0 items-center gap-0.5">
+            <a href={src} download className="icon-btn" title={t(ui.pdf.download)} aria-label={t(ui.pdf.download)}>
+              <Download size={17} strokeWidth={1.6} />
             </a>
-            <a
-              href={src}
-              target="_blank"
-              rel="noreferrer"
-              title={t(ui.pdf.fullscreen)}
-              aria-label={t(ui.pdf.fullscreen)}
-              className="rounded-full p-2 text-dim transition-colors duration-200 ease hover:bg-accent/10 hover:text-accent"
-            >
-              <ExternalLink size={17} strokeWidth={1.75} />
-            </a>
+            <button type="button" onClick={print} className="icon-btn" title={t(ui.pdf.print)} aria-label={t(ui.pdf.print)}>
+              <Printer size={17} strokeWidth={1.6} />
+            </button>
             <button
               type="button"
-              onClick={onClose}
-              aria-label={t(ui.pdf.close)}
-              className="rounded-full p-2 text-dim transition-colors duration-200 ease hover:bg-accent/10 hover:text-accent"
+              onClick={share}
+              className="icon-btn"
+              title={copied ? t(ui.pdf.copied) : t(ui.pdf.share)}
+              aria-label={t(ui.pdf.share)}
             >
-              <X size={18} />
+              {copied ? <Check size={17} strokeWidth={1.8} className="text-accent" /> : <Share2 size={17} strokeWidth={1.6} />}
+            </button>
+            <a href={src} target="_blank" rel="noreferrer" className="icon-btn" title={t(ui.pdf.fullscreen)} aria-label={t(ui.pdf.fullscreen)}>
+              <ExternalLink size={17} strokeWidth={1.6} />
+            </a>
+            <span aria-hidden className="mx-1 h-5 w-px bg-[var(--line)]" />
+            <button type="button" onClick={onClose} className="icon-btn" aria-label={t(ui.pdf.close)}>
+              <X size={18} strokeWidth={1.6} />
             </button>
           </div>
         </div>
-        <object
-          data={src}
-          type="application/pdf"
-          aria-label={title}
-          className="h-full w-full bg-paper"
-        >
-          <div className="flex h-full flex-col items-center justify-center gap-5 p-8 text-center">
-            <p className="max-w-sm text-sm leading-relaxed text-dim">{t(ui.pdf.fallback)}</p>
-            <div className="flex flex-wrap justify-center gap-3">
-              <a href={src} target="_blank" rel="noreferrer" className="btn btn-primary">
-                <ExternalLink size={14} strokeWidth={1.75} aria-hidden />
-                {t(ui.pdf.fullscreen)}
-              </a>
-              <a href={src} download className="btn btn-secondary">
-                <Download size={14} strokeWidth={1.75} aria-hidden />
-                {t(ui.pdf.download)}
-              </a>
-            </div>
-          </div>
-        </object>
+
+        {/* Le document, sur fond papier, comme une feuille posée */}
+        <div className="relative flex-1 bg-paper-2 p-2 md:p-4">
+          <iframe
+            ref={frame}
+            src={viewerSrc}
+            title={title}
+            className="h-full w-full rounded-lg bg-white shadow-[0_2px_12px_rgba(27,33,30,0.12)]"
+          />
+        </div>
+
+        <p className="label flex items-center justify-center gap-3 border-t rule bg-card/70 px-4 py-2">
+          <span>{t(ui.pdf.notShown)}</span>
+          <a href={src} target="_blank" rel="noreferrer" className="text-accent underline-offset-4 hover:underline">
+            {t(ui.pdf.fullscreen)}
+          </a>
+          <span aria-hidden>·</span>
+          <a href={src} download className="text-accent underline-offset-4 hover:underline">
+            {t(ui.pdf.download)}
+          </a>
+        </p>
       </div>
     </div>
   );

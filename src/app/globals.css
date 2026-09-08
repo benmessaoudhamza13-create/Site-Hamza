@@ -1,38 +1,45 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ */
-/* Tokens                                                              */
+/* Tokens — ivoire / vert forêt / or champagne                         */
 /* ------------------------------------------------------------------ */
 :root {
-  --paper: #f4efe4;
-  --paper-2: #faf7f0;
-  --card: #fffdf9;
-  --text: #1f2420;
-  --text-dim: rgba(31, 36, 32, 0.66);
-  --accent: #2f5c4a;
-  --accent-deep: #22483a;
-  --gold: #b8903f;
-  --gold-soft: #d9c08a;
-  --line: rgba(31, 36, 32, 0.13);
+  --paper: #f4f0e6;
+  --paper-2: #ebe5d6;
+  --card: #fffdf8;
+  --ink: #0e1c17;
+  --ink-2: #163a30;
+  --text: #1b211e;
+  --text-dim: rgba(27, 33, 30, 0.66);
+  --text-on-dark: #f1ecdf;
+  --text-on-dark-dim: rgba(241, 236, 223, 0.66);
+  --accent: #1f4d3f;
+  --accent-deep: #163a30;
+  --gold: #c4a35a;
+  --gold-deep: #a3843c;
+  --gold-soft: #e2cf98;
+  --line: rgba(27, 33, 30, 0.12);
+  --line-on-dark: rgba(241, 236, 223, 0.14);
+  --linkedin: #0a66c2;
 
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
   --dur: 200ms;
-  --dur-slow: 320ms;
 
-  --radius-card: 14px;
+  --radius-card: 16px;
   --radius-tile: 12px;
   --radius-btn: 8px;
 
-  --shadow-1: 0 1px 3px rgba(31, 36, 32, 0.06), 0 8px 24px rgba(31, 36, 32, 0.05);
-  --shadow-2: 0 4px 10px rgba(31, 36, 32, 0.08), 0 16px 32px rgba(31, 36, 32, 0.08);
-  --shadow-pop: 0 8px 24px rgba(31, 36, 32, 0.12);
-  --shadow-modal: 0 24px 64px rgba(31, 36, 32, 0.25);
+  --shadow-1: 0 1px 2px rgba(27, 33, 30, 0.05), 0 10px 30px rgba(27, 33, 30, 0.06);
+  --shadow-2: 0 6px 14px rgba(27, 33, 30, 0.08), 0 22px 48px rgba(27, 33, 30, 0.1);
+  --shadow-pop: 0 10px 30px rgba(27, 33, 30, 0.14);
+  --shadow-modal: 0 40px 90px rgba(14, 28, 23, 0.45);
 }
 
 @theme inline {
   --color-paper: var(--paper);
   --color-paper-2: var(--paper-2);
   --color-card: var(--card);
+  --color-ink: var(--ink);
   --color-text: var(--text);
   --color-dim: var(--text-dim);
   --color-accent: var(--accent);
@@ -49,49 +56,124 @@
 * {
   box-sizing: border-box;
 }
-
 html {
   scroll-behavior: smooth;
 }
-
 body {
   background: var(--paper);
   color: var(--text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
-
 ::selection {
   background: var(--accent);
   color: var(--card);
 }
-
 h1,
 h2,
 h3 {
   text-wrap: balance;
 }
-
 p {
   text-wrap: pretty;
 }
-
 .rule {
   border-color: var(--line);
 }
-
 a:focus-visible,
 button:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--gold);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
 /* ------------------------------------------------------------------ */
+/* Fond : grain de papier + guilloché + halos                          */
+/* ------------------------------------------------------------------ */
+.backdrop {
+  --px: 0px;
+  --py: 0px;
+}
+.grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.55;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.guilloche {
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='%231f4d3f' stroke-width='0.55'%3E%3Ccircle cx='90' cy='90' r='72'/%3E%3Ccircle cx='90' cy='90' r='54'/%3E%3Ccircle cx='90' cy='90' r='36'/%3E%3Ccircle cx='90' cy='90' r='18'/%3E%3Ccircle cx='0' cy='0' r='72'/%3E%3Ccircle cx='180' cy='0' r='72'/%3E%3Ccircle cx='0' cy='180' r='72'/%3E%3Ccircle cx='180' cy='180' r='72'/%3E%3Ccircle cx='0' cy='0' r='36'/%3E%3Ccircle cx='180' cy='0' r='36'/%3E%3Ccircle cx='0' cy='180' r='36'/%3E%3Ccircle cx='180' cy='180' r='36'/%3E%3C/g%3E%3C/svg%3E");
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, transparent 30%, black 100%);
+}
+.glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  transform: translate(var(--px), var(--py));
+  transition: transform 600ms var(--ease);
+}
+.glow-gold {
+  width: 46vw;
+  height: 46vw;
+  right: -12vw;
+  top: -10vw;
+  background: radial-gradient(circle, rgba(196, 163, 90, 0.22), transparent 65%);
+}
+.glow-green {
+  width: 50vw;
+  height: 50vw;
+  left: -16vw;
+  bottom: -14vw;
+  background: radial-gradient(circle, rgba(31, 77, 63, 0.16), transparent 65%);
+  transform: translate(calc(var(--px) * -1), calc(var(--py) * -1));
+}
+
+/* Bandeau sombre (hero, pied de page) */
+.band-dark {
+  position: relative;
+  color: var(--text-on-dark);
+  background:
+    radial-gradient(1100px 520px at 12% -20%, #1d4237 0%, transparent 60%),
+    radial-gradient(800px 420px at 100% 110%, #1a352c 0%, transparent 60%),
+    var(--ink);
+  isolation: isolate;
+}
+.band-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.12;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='%23e2cf98' stroke-width='0.55'%3E%3Ccircle cx='90' cy='90' r='72'/%3E%3Ccircle cx='90' cy='90' r='54'/%3E%3Ccircle cx='90' cy='90' r='36'/%3E%3Ccircle cx='90' cy='90' r='18'/%3E%3Ccircle cx='0' cy='0' r='72'/%3E%3Ccircle cx='180' cy='0' r='72'/%3E%3Ccircle cx='0' cy='180' r='72'/%3E%3Ccircle cx='180' cy='180' r='72'/%3E%3C/g%3E%3C/svg%3E");
+  mask-image: radial-gradient(ellipse 80% 90% at 70% 50%, black 0%, transparent 75%);
+}
+.band-dark > * {
+  position: relative;
+  z-index: 1;
+}
+.band-dark .rule {
+  border-color: var(--line-on-dark);
+}
+.band-dark .text-dim {
+  color: var(--text-on-dark-dim);
+}
+.band-dark .eyebrow {
+  color: var(--gold-soft);
+}
+.band-dark .eyebrow::before {
+  background: var(--gold);
+}
+.band-dark .label {
+  color: var(--text-on-dark-dim);
+}
+
+/* ------------------------------------------------------------------ */
 /* Typographie utilitaire                                              */
 /* ------------------------------------------------------------------ */
-/* Titre de section : petit, mono, accent, précédé d'un filet or */
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -113,8 +195,6 @@ button:focus-visible,
 .eyebrow-plain::before {
   display: none;
 }
-
-/* Étiquette secondaire (date, catégorie, périodes) */
 .label {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -123,8 +203,6 @@ button:focus-visible,
   letter-spacing: 0.14em;
   color: var(--text-dim);
 }
-
-/* Métadonnée légèrement plus présente (résultat, lien d'action) */
 .meta {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -148,7 +226,7 @@ button:focus-visible,
 }
 .card:hover {
   transform: translateY(-2px);
-  border-color: rgba(47, 92, 74, 0.28);
+  border-color: rgba(196, 163, 90, 0.5);
   box-shadow: var(--shadow-2);
 }
 .card-static,
@@ -156,7 +234,6 @@ button:focus-visible,
   transform: none;
 }
 
-/* Tuile d'icône (croquis de projet, contact) */
 .tile {
   display: inline-flex;
   align-items: center;
@@ -165,7 +242,7 @@ button:focus-visible,
   height: 3rem;
   flex-shrink: 0;
   border-radius: var(--radius-tile);
-  background: rgba(47, 92, 74, 0.07);
+  background: rgba(31, 77, 63, 0.07);
   color: var(--accent);
   transition:
     background-color var(--dur) var(--ease),
@@ -204,11 +281,14 @@ button:focus-visible,
   cursor: pointer;
 }
 .chip-btn:hover,
-.chip-hover:hover {
+.chip-hover:hover,
+.chip-hover:focus-within {
   color: var(--accent);
-  border-color: var(--accent);
+  border-color: var(--gold);
+  background: rgba(196, 163, 90, 0.08);
 }
-.chip-hover:hover {
+.chip-hover:hover,
+.chip-hover:focus-within {
   transform: translateY(-2px);
 }
 .chip-active,
@@ -219,12 +299,12 @@ button:focus-visible,
 }
 .chip-accent {
   color: var(--accent);
-  border-color: rgba(47, 92, 74, 0.35);
+  border-color: rgba(31, 77, 63, 0.35);
 }
 .chip-gold {
-  color: var(--gold);
-  border-color: rgba(184, 144, 63, 0.35);
-  background: rgba(184, 144, 63, 0.08);
+  color: var(--gold-deep);
+  border-color: rgba(196, 163, 90, 0.45);
+  background: rgba(196, 163, 90, 0.1);
 }
 .chip-solid {
   background: var(--accent);
@@ -273,7 +353,7 @@ button:focus-visible,
 .btn-primary:hover {
   background: var(--accent-deep);
   border-color: var(--accent-deep);
-  box-shadow: 0 6px 16px rgba(47, 92, 74, 0.22);
+  box-shadow: 0 8px 20px rgba(31, 77, 63, 0.25);
 }
 .btn-secondary {
   background: transparent;
@@ -282,7 +362,42 @@ button:focus-visible,
 }
 .btn-secondary:hover {
   color: var(--accent);
-  border-color: var(--accent);
+  border-color: var(--gold);
+}
+.btn-gold {
+  background: var(--gold);
+  color: var(--ink);
+  border: 1px solid var(--gold);
+}
+.btn-gold:hover {
+  background: var(--gold-soft);
+  border-color: var(--gold-soft);
+  box-shadow: 0 8px 24px rgba(196, 163, 90, 0.3);
+}
+.btn-ghost-light {
+  background: transparent;
+  color: var(--text-on-dark);
+  border: 1px solid var(--line-on-dark);
+}
+.btn-ghost-light:hover {
+  border-color: var(--gold);
+  color: var(--gold-soft);
+}
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  color: var(--text-dim);
+  transition:
+    background-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+.icon-btn:hover {
+  background: rgba(196, 163, 90, 0.14);
+  color: var(--accent);
 }
 
 .link-arrow {
@@ -302,7 +417,6 @@ button:focus-visible,
   transform: translateX(-3px);
 }
 
-/* Lien de navigation : soulignement fin qui s'anime */
 .nav-link {
   position: relative;
   padding: 0.25rem 0;
@@ -320,7 +434,7 @@ button:focus-visible,
   right: 0;
   bottom: -2px;
   height: 1px;
-  background: var(--accent);
+  background: var(--gold);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--dur) var(--ease);
@@ -358,24 +472,13 @@ button:focus-visible,
 @keyframes rise-in {
   from {
     opacity: 0;
-    transform: translateY(12px) scale(0.985);
+    transform: translateY(14px) scale(0.985);
   }
   to {
     opacity: 1;
     transform: none;
   }
 }
-.reveal {
-  animation: reveal 220ms var(--ease);
-}
-.fade-in {
-  animation: fade-in 180ms ease;
-}
-.rise-in {
-  animation: rise-in 260ms var(--ease);
-}
-
-/* Transition entre pages */
 @keyframes page-enter {
   from {
     opacity: 0;
@@ -386,48 +489,47 @@ button:focus-visible,
     transform: none;
   }
 }
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+.reveal {
+  animation: reveal 220ms var(--ease);
+}
+.fade-in {
+  animation: fade-in 180ms ease;
+}
+.rise-in {
+  animation: rise-in 280ms var(--ease);
+}
 .page-enter {
   animation: page-enter 360ms var(--ease);
 }
+.bob {
+  animation: bob 1.6s ease-in-out infinite;
+}
 
-/* Apparition au défilement — active seulement quand le JS est là */
-html.js-reveal [data-reveal] {
+/* Apparition au défilement — l'état est porté par un attribut (jamais
+   réécrit par React), pour survivre aux re-rendus. */
+html.js-reveal [data-reveal]:not([data-revealed]) {
   opacity: 0;
   transform: translateY(14px);
+}
+html.js-reveal [data-reveal] {
   transition:
     opacity 560ms var(--ease),
     transform 560ms var(--ease);
   transition-delay: var(--reveal-delay, 0ms);
 }
-html.js-reveal [data-reveal].is-visible {
-  opacity: 1;
-  transform: none;
-}
 
 /* ------------------------------------------------------------------ */
-/* Décor : croquis en filigrane, skyline, carte à la une               */
+/* Skyline gravé (hero) et carte à la une                              */
 /* ------------------------------------------------------------------ */
-.sketches {
-  --px: 0px;
-  --py: 0px;
-}
-.sketch {
-  color: var(--accent);
-  opacity: 0.1;
-  stroke: currentColor;
-  stroke-width: 1.4;
-  filter: url(#pencil);
-  transform: translate(var(--px), var(--py));
-  transition: transform 400ms var(--ease);
-}
-.sketch-gold {
-  color: var(--gold);
-  opacity: 0.16;
-}
-.sketch:nth-of-type(odd) {
-  transform: translate(calc(var(--px) * -1), calc(var(--py) * -1));
-}
-
 @keyframes draw {
   from {
     stroke-dashoffset: 1;
@@ -440,19 +542,21 @@ html.js-reveal [data-reveal].is-visible {
 .skyline circle {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  animation: draw 2.4s cubic-bezier(0.6, 0, 0.2, 1) 0.15s forwards;
+  animation: draw 2.6s cubic-bezier(0.6, 0, 0.2, 1) 0.2s forwards;
 }
 .skyline {
-  color: var(--accent);
-  mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+  color: var(--gold-soft);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 100%);
 }
 
 .featured {
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-card);
-  background: linear-gradient(135deg, var(--accent-deep) 0%, var(--accent) 70%, #3a6b58 100%);
-  color: #fff;
+  background:
+    radial-gradient(700px 300px at 100% 0%, #24564a 0%, transparent 60%),
+    linear-gradient(135deg, var(--ink-2) 0%, var(--accent-deep) 100%);
+  color: var(--text-on-dark);
   box-shadow: var(--shadow-1);
   transition:
     transform var(--dur) var(--ease),
@@ -460,13 +564,13 @@ html.js-reveal [data-reveal].is-visible {
 }
 .featured:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 40px rgba(34, 72, 58, 0.28);
+  box-shadow: 0 20px 48px rgba(14, 28, 23, 0.35);
 }
 .featured .eyebrow {
   color: var(--gold-soft);
 }
 .featured .eyebrow::before {
-  background: var(--gold-soft);
+  background: var(--gold);
 }
 .featured .halo {
   position: absolute;
@@ -475,38 +579,53 @@ html.js-reveal [data-reveal].is-visible {
   width: 12rem;
   height: 12rem;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(226, 207, 152, 0.2);
   transition: transform 600ms var(--ease);
   pointer-events: none;
 }
 .featured:hover .halo {
-  transform: scale(1.25);
+  transform: scale(1.3);
 }
 
 /* ------------------------------------------------------------------ */
-/* Frise, bulles, contact                                              */
+/* Frise : survol carte par carte                                      */
 /* ------------------------------------------------------------------ */
 .timeline-node {
-  transition: transform var(--dur) var(--ease);
+  transition:
+    transform var(--dur) var(--ease),
+    background-color var(--dur) var(--ease);
 }
-.timeline-item:hover .timeline-node,
-.timeline-item:focus-within .timeline-node {
-  transform: scale(1.35);
+.timeline-item:has(.timeline-card:hover) .timeline-node,
+.timeline-item:has(.timeline-card:focus-visible) .timeline-node,
+.timeline-item.is-open .timeline-node {
+  transform: scale(1.4);
+  background: var(--gold);
+  border-color: var(--gold);
 }
 .timeline-detail {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 280ms var(--ease);
+  transition: grid-template-rows 300ms var(--ease);
 }
 .timeline-detail > * {
   overflow: hidden;
 }
-.timeline-item:hover .timeline-detail,
-.timeline-item:focus-within .timeline-detail,
+.timeline-card:hover .timeline-detail,
+.timeline-card:focus-visible .timeline-detail,
 .timeline-item.is-open .timeline-detail {
   grid-template-rows: 1fr;
 }
+.timeline-card .detail-hint {
+  transition: opacity var(--dur) var(--ease);
+}
+.timeline-card:hover .detail-hint,
+.timeline-item.is-open .detail-hint {
+  opacity: 0;
+}
 
+/* ------------------------------------------------------------------ */
+/* Bulles                                                              */
+/* ------------------------------------------------------------------ */
 .tip {
   position: relative;
 }
@@ -521,10 +640,22 @@ html.js-reveal [data-reveal].is-visible {
   border: 1px solid var(--line);
   border-radius: 12px;
   background: var(--card);
+  color: var(--text);
   box-shadow: var(--shadow-pop);
+  z-index: 20;
   transition:
     opacity var(--dur) var(--ease),
     transform var(--dur) var(--ease);
+}
+.tip-wide {
+  white-space: normal;
+  width: 230px;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.5;
 }
 .tip:hover .tip-bubble,
 .tip:focus-within .tip-bubble {
@@ -532,10 +663,64 @@ html.js-reveal [data-reveal].is-visible {
   transform: translate(-50%, 0);
 }
 
+/* ------------------------------------------------------------------ */
+/* Contact : cartes colorées au survol                                 */
+/* ------------------------------------------------------------------ */
+.contact-card {
+  --c: var(--accent);
+  --c-soft: rgba(31, 77, 63, 0.08);
+}
+.contact-card.is-gold {
+  --c: var(--gold-deep);
+  --c-soft: rgba(196, 163, 90, 0.14);
+}
+.contact-card.is-linkedin {
+  --c: var(--linkedin);
+  --c-soft: rgba(10, 102, 194, 0.1);
+}
+.contact-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, var(--c-soft), transparent 55%);
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease);
+  pointer-events: none;
+}
+.contact-card:hover {
+  border-color: var(--c);
+  box-shadow: 0 18px 44px color-mix(in srgb, var(--c) 22%, transparent);
+}
+.contact-card:hover::before {
+  opacity: 1;
+}
+.contact-card .tile {
+  color: var(--c);
+  background: var(--c-soft);
+}
+.contact-card:hover .tile {
+  background: var(--c);
+  color: #fff;
+  transform: scale(1.08);
+}
+.contact-card:hover .value {
+  color: var(--c);
+}
+.contact-card .action {
+  color: var(--c);
+}
+
+/* Enveloppe */
 .envelope {
   position: relative;
   width: 56px;
   height: 40px;
+  color: var(--c);
+  transition: transform var(--dur) var(--ease);
+}
+.contact-card:hover .envelope {
+  transform: translateY(-2px);
 }
 .envelope .body {
   position: absolute;
@@ -558,7 +743,7 @@ html.js-reveal [data-reveal].is-visible {
   background: var(--card);
   z-index: 3;
   transform-origin: top;
-  transition: transform 280ms var(--ease);
+  transition: transform 300ms var(--ease);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
 }
 .envelope .letter {
@@ -568,16 +753,16 @@ html.js-reveal [data-reveal].is-visible {
   top: 6px;
   height: 26px;
   border-radius: 3px;
-  background: var(--paper);
-  border: 1px solid var(--line);
+  background: var(--gold-soft);
+  border: 1px solid var(--gold);
   z-index: 1;
-  transition: transform 280ms var(--ease);
+  transition: transform 300ms var(--ease);
 }
 .group:hover .envelope .flap {
   transform: rotateX(180deg);
 }
 .group:hover .envelope .letter {
-  transform: translateY(-14px);
+  transform: translateY(-16px);
 }
 
 @keyframes ring {
@@ -586,20 +771,60 @@ html.js-reveal [data-reveal].is-visible {
     transform: rotate(0);
   }
   20% {
-    transform: rotate(-12deg);
+    transform: rotate(-14deg);
   }
   40% {
-    transform: rotate(10deg);
+    transform: rotate(12deg);
   }
   60% {
-    transform: rotate(-6deg);
+    transform: rotate(-8deg);
   }
   80% {
-    transform: rotate(4deg);
+    transform: rotate(5deg);
   }
 }
 .group:hover .ring {
-  animation: ring 600ms ease;
+  animation: ring 650ms ease;
+}
+
+/* Pied de page : pastilles qui se remplissent */
+.foot-pill {
+  --c: var(--gold);
+  --on: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--line-on-dark);
+  padding: 0.5rem 0.9rem;
+  color: var(--text-on-dark-dim);
+  transition:
+    background-color var(--dur) var(--ease),
+    color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    transform var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+}
+.foot-pill.is-green {
+  --c: #2f6b58;
+  --on: #fff;
+}
+.foot-pill.is-linkedin {
+  --c: var(--linkedin);
+  --on: #fff;
+}
+.foot-pill:hover {
+  background: var(--c);
+  border-color: var(--c);
+  color: var(--on);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--c) 35%, transparent);
+}
+.foot-pill svg {
+  transition: transform var(--dur) var(--ease);
+}
+.foot-pill:hover svg {
+  transform: translateY(-1px) scale(1.15);
 }
 
 /* ------------------------------------------------------------------ */

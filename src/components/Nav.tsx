@@ -70,14 +70,14 @@ export default function Nav() {
           >
             <span
               aria-hidden
-              className={`absolute inset-y-0 w-1/2 rounded-full bg-accent transition-transform duration-300 ease-[var(--ease)] ${
+              className={`absolute inset-y-0 w-1/2 rounded-full bg-gold transition-transform duration-300 ease-[var(--ease)] ${
                 lang === "en" ? "translate-x-full" : "translate-x-0"
               }`}
             />
-            <span className={`relative z-10 px-2.5 py-1 transition-colors duration-200 ${lang === "fr" ? "text-white" : "text-dim"}`}>
+            <span className={`relative z-10 px-2.5 py-1 transition-colors duration-200 ${lang === "fr" ? "text-ink" : "text-dim"}`}>
               FR
             </span>
-            <span className={`relative z-10 px-2.5 py-1 transition-colors duration-200 ${lang === "en" ? "text-white" : "text-dim"}`}>
+            <span className={`relative z-10 px-2.5 py-1 transition-colors duration-200 ${lang === "en" ? "text-ink" : "text-dim"}`}>
               EN
             </span>
           </button>

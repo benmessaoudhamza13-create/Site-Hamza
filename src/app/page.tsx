@@ -18,36 +18,36 @@ export default function Home() {
 
   return (
     <>
-      {/* HERO */}
-      <section className="relative overflow-hidden">
-        <div className="mx-auto max-w-6xl px-6 pt-16 md:pt-24">
-          <span aria-hidden className="mb-7 block h-px w-14 bg-gold" />
+      {/* HERO — bandeau sombre, skyline gravé en or */}
+      <section className="band-dark overflow-hidden">
+        <div className="mx-auto max-w-6xl px-6 pt-20 md:pt-28">
+          <span aria-hidden className="mb-8 block h-px w-16 bg-gold" />
           <h1 className="max-w-3xl font-display text-4xl italic leading-[1.08] tracking-tight md:text-6xl lg:text-7xl">
             {t(ui.hero.title)}
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-relaxed text-dim md:text-xl">
             {t(ui.hero.lead)}
           </p>
-          <div className="mt-9 flex flex-wrap items-center gap-3">
-            <Link href="/projets" className="btn btn-primary">
+          <div className="mt-10 flex flex-wrap items-center gap-3">
+            <Link href="/projets" className="btn btn-gold">
               {t(ui.hero.ctaProjects)}
             </Link>
-            <CvButton className="btn btn-secondary" />
+            <CvButton className="btn btn-ghost-light" />
             <Link
               href="/macro"
-              className="link-arrow meta ml-2 text-dim transition-colors duration-200 hover:text-accent"
+              className="link-arrow meta ml-2 text-dim transition-colors duration-200 hover:text-[var(--gold-soft)]"
             >
               {t(ui.hero.ctaMacro)} <span className="arrow">→</span>
             </Link>
           </div>
         </div>
-        <div className="pointer-events-none relative mx-auto -mt-4 max-w-7xl md:-mt-14">
-          <Skyline className="skyline w-full opacity-[0.55]" />
+        <div className="pointer-events-none mx-auto -mt-2 max-w-7xl md:-mt-12">
+          <Skyline className="skyline w-full opacity-70" />
         </div>
       </section>
 
-      {/* SÉLECTION DE PROJETS */}
-      <section className="border-t rule bg-paper-2/70">
+      {/* TRAVAUX CHOISIS */}
+      <section>
         <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
           <div className="mb-10 flex items-end justify-between gap-4" data-reveal>
             <div>
@@ -64,12 +64,9 @@ export default function Home() {
             </Link>
           </div>
 
-          <div
-            className="-mx-6 px-6 [mask-image:linear-gradient(to_right,transparent,black_24px,black_calc(100%-24px),transparent)]"
-            data-reveal
-            style={{ "--reveal-delay": "80ms" } as React.CSSProperties}
-          >
-            <div className="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto py-3">
+          {/* Rangée défilante : déborde jusqu'au bord de l'écran, sans masque */}
+          <div className="-mx-6" data-reveal style={{ "--reveal-delay": "80ms" } as React.CSSProperties}>
+            <div className="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 py-3 scroll-px-6">
               {highlights.map((p) => (
                 <Link
                   key={p.slug}
@@ -78,11 +75,11 @@ export default function Home() {
                 >
                   <div className="flex items-start justify-between">
                     <span className="tile tile-lg">
-                      <ProjectSketch icone={p.icone} className="h-8 w-8" />
+                      <ProjectSketch icone={p.icone} className="h-6 w-6" />
                     </span>
                     <ArrowUpRight
                       size={18}
-                      strokeWidth={1.75}
+                      strokeWidth={1.6}
                       aria-hidden
                       className="text-dim opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent group-hover:opacity-100"
                     />
@@ -101,6 +98,8 @@ export default function Home() {
                   </div>
                 </Link>
               ))}
+              {/* Respiration en fin de rangée : la dernière carte ne colle pas au bord */}
+              <span aria-hidden className="w-1 shrink-0" />
             </div>
           </div>
 
@@ -114,7 +113,7 @@ export default function Home() {
       </section>
 
       {/* REVUE MACRO */}
-      <section className="border-t rule bg-paper/70">
+      <section className="border-t rule">
         <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
           <div className="mb-10 flex items-end justify-between gap-4" data-reveal>
             <div>
@@ -146,24 +145,16 @@ export default function Home() {
                 <h3 className="mt-4 font-display text-2xl italic leading-snug md:text-3xl">
                   {t(featured.titre)}
                 </h3>
-                <p className="mt-4 max-w-xl text-white/80">{t(featured.resume)}</p>
+                <p className="mt-4 max-w-xl text-[var(--text-on-dark-dim)]">{t(featured.resume)}</p>
               </div>
-              <span className="link-arrow meta relative mt-8">
+              <span className="link-arrow meta relative mt-8 text-[var(--gold-soft)]">
                 {t(ui.home.readReview)} <span className="arrow">→</span>
               </span>
             </Link>
 
-            <div
-              className="flex flex-col gap-4"
-              data-reveal
-              style={{ "--reveal-delay": "160ms" } as React.CSSProperties}
-            >
+            <div className="flex flex-col gap-4" data-reveal style={{ "--reveal-delay": "160ms" } as React.CSSProperties}>
               {others.slice(0, 2).map((r) => (
-                <Link
-                  key={r.slug}
-                  href={`/macro/${r.slug}`}
-                  className="card group flex flex-1 flex-col justify-between p-6"
-                >
+                <Link key={r.slug} href={`/macro/${r.slug}`} className="card group flex flex-1 flex-col justify-between p-6">
                   <div>
                     <p className="label text-accent">{t(r.date)}</p>
                     <h3 className="mt-2 font-display text-lg italic leading-snug transition-colors duration-200 group-hover:text-accent">

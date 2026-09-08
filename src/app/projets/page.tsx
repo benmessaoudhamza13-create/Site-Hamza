@@ -146,7 +146,7 @@ function ProjectCard({
         className="flex w-full items-start gap-4 p-5 text-left md:p-6"
       >
         <span className={`tile mt-0.5 ${isOpen ? "tile-active" : ""}`}>
-          <ProjectSketch icone={p.icone} className="h-7 w-7" />
+          <ProjectSketch icone={p.icone} className="h-5 w-5" />
         </span>
         <span className="min-w-0 flex-1">
           <span className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
