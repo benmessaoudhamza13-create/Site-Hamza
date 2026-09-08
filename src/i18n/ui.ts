@@ -1,0 +1,137 @@
+import type { L } from "@/lib/i18n";
+
+const l = (fr: string, en: string): L => ({ fr, en });
+
+export const ui = {
+  nav: {
+    parcours: l("Mon parcours", "My path"),
+    projets: l("Projets", "Projects"),
+    macro: l("Revue macro", "Macro review"),
+    contact: l("Contact", "Contact"),
+    tagline: l(
+      "Économie appliquée et finance — HEC Montréal",
+      "Applied economics & finance — HEC Montréal",
+    ),
+    switchTo: l("Switch to English", "Passer en français"),
+  },
+  hero: {
+    title: l(
+      "Mon répertoire de projets et d’accomplissements.",
+      "My repository of projects and accomplishments.",
+    ),
+    lead: l(
+      "Candidat à la maîtrise en finance de marché à HEC Montréal, avec une double formation en finance et économie. Ce site rassemble mes projets et mes lectures de marché — la trace continue d’un travail d’analyse, pas juste un CV figé.",
+      "Master’s candidate in financial markets at HEC Montréal, with a dual background in finance and economics. This site gathers my projects and market notes — the running record of analytical work, not a frozen résumé.",
+    ),
+    ctaProjects: l("Voir les projets", "See the projects"),
+    ctaMacro: l("Revue macro", "Macro review"),
+    chartCaption: l("Courbe illustrative", "Illustrative curve"),
+    chartHint: l("Survolez la courbe", "Hover the curve"),
+  },
+  home: {
+    selectionEyebrow: l("Sélection", "Selected work"),
+    selectionTitle: l("Ce sur quoi j’ai travaillé", "What I’ve been working on"),
+    seeAll: l("Tout voir", "See all"),
+    seeMore: l("Voir plus", "See more"),
+    macroEyebrow: l("Revue macro", "Macro review"),
+    macroTitle: l("Mes revues macro", "My macro reviews"),
+    featured: l("À la une", "Featured"),
+    readReview: l("Lire la revue", "Read the review"),
+    moreSoon: l("D’autres revues arrivent.", "More reviews coming."),
+    allReviews: l("Toutes les revues", "All reviews"),
+  },
+  cat: {
+    Portefeuille: l("Portefeuille", "Portfolio"),
+    Valorisation: l("Valorisation", "Valuation"),
+    Quantitatif: l("Quantitatif", "Quantitative"),
+    Compétition: l("Compétition", "Competition"),
+  },
+  projets: {
+    eyebrow: l("Projets & compétitions", "Projects & competitions"),
+    title: l(
+      "Ce que j’ai construit, en classe et en dehors",
+      "What I’ve built, in class and beyond",
+    ),
+    all: l("Tous", "All"),
+    ongoingEyebrow: l("En cours & à venir", "Ongoing & upcoming"),
+    ongoingTitle: l("Ce qui se prépare", "What’s in the works"),
+    inProgress: l("En cours", "Ongoing"),
+    madeWith: l("Réalisé avec", "Made with"),
+    readDoc: l("Lire le document", "Read the document"),
+    download: l("Télécharger", "Download"),
+    details: l("Détails", "Details"),
+    preview: l("Aperçu", "Preview"),
+    noResult: l("Aucun projet dans cette catégorie.", "No project in this category."),
+  },
+  macro: {
+    eyebrow: l("Mes revues macro", "My macro reviews"),
+    title: l(
+      "Ce qui a bougé, et pourquoi ça compte",
+      "What moved, and why it matters",
+    ),
+    intro: l(
+      "Une lecture courte des marchés : trois angles fixes — ce qui a bougé, pourquoi ça compte, ce que je surveille ensuite. L’entrée ci-dessous est un modèle ; les prochaines publications suivront ce format.",
+      "A short read on markets: three fixed angles — what moved, why it matters, what I’m watching next. The entry below is a template; upcoming issues will follow this format.",
+    ),
+    read: l("Lire", "Read"),
+    back: l("Toutes les revues", "All reviews"),
+    search: l("Rechercher une revue…", "Search reviews…"),
+    latest: l("Dernière revue", "Latest review"),
+    archive: l("Archive", "Archive"),
+    noResult: l("Aucune revue ne correspond.", "No matching review."),
+  },
+  contact: {
+    eyebrow: l("Contact", "Contact"),
+    title: l("Parlons-en", "Let’s talk"),
+    intro: l(
+      "Je suis toujours en apprentissage, et j’adore échanger avec des gens aux parcours différents — marchés des capitaux, gestion de portefeuille, finance corporative ou autre. N’hésitez pas à m’écrire, un coffee chat est toujours bienvenu.",
+      "I’m always learning, and I love talking with people from different paths — capital markets, portfolio management, corporate finance or otherwise. Don’t hesitate to reach out; a coffee chat is always welcome.",
+    ),
+    email: l("Courriel", "Email"),
+    phone: l("Téléphone", "Phone"),
+    linkedin: l("LinkedIn", "LinkedIn"),
+    write: l("M’écrire", "Write to me"),
+    call: l("M’appeler", "Call me"),
+    visit: l("Voir le profil", "View profile"),
+  },
+  apropos: {
+    eyebrow: l("À propos", "About"),
+    title: l("Mon parcours", "My path"),
+    intro: l(
+      "Je suis candidat à la maîtrise en finance de marché à HEC Montréal, après une double formation en finance et en économie appliquée. Ce parcours m’a mené à deux stages consécutifs à la Banque Nationale du Canada, d’abord en optimisation continue puis en gestion de patrimoine, où j’ai développé une lecture rigoureuse des marchés et des enjeux qui les traversent. Ce site rassemble mes projets et mes lectures de marché.",
+      "I’m a master’s candidate in financial markets at HEC Montréal, following a dual background in finance and applied economics. That path led me to two consecutive internships at National Bank of Canada — first in continuous improvement, then in wealth management — where I developed a rigorous reading of markets and the forces shaping them. This site gathers my projects and market notes.",
+    ),
+    cv: l("Mon CV", "My résumé"),
+    cvTitle: l("Mon CV", "My résumé"),
+    timelineEyebrow: l("Formation & expérience", "Education & experience"),
+    timelineHint: l(
+      "Survolez une étape pour en voir le détail.",
+      "Hover a step to see the details.",
+    ),
+    skillsEyebrow: l("Compétences & outils", "Skills & tools"),
+    analysis: l("Analyse & valorisation", "Analysis & valuation"),
+    tools: l("Outils", "Tools"),
+    languages: l("Langues", "Languages"),
+    certifications: l("Certifications", "Certifications"),
+    engagementEyebrow: l("Engagement personnel", "Beyond the desk"),
+    leadership: l("Leadership & implication", "Leadership & involvement"),
+    benevolat: l("Bénévolat", "Volunteering"),
+    sport: l("Sport", "Sport"),
+    current: l("Aujourd’hui", "Now"),
+  },
+  footer: {
+    location: l("Montréal, QC", "Montréal, QC"),
+    languages: l("Langues", "Languages"),
+  },
+  langs: {
+    fr: { code: "FR", greeting: "Bonjour", level: l("Langue maternelle", "Native") },
+    ar: { code: "AR", greeting: "سلام", level: l("Langue maternelle", "Native") },
+    en: { code: "EN", greeting: "Hello", level: l("Expert", "Expert") },
+    es: { code: "ES", greeting: "Hola", level: l("Niveau académique", "Academic level") },
+  },
+  pdf: {
+    close: l("Fermer", "Close"),
+    download: l("Télécharger", "Download"),
+    fullscreen: l("Ouvrir dans un onglet", "Open in a tab"),
+  },
+} as const;

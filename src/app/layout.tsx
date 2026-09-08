@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Playfair_Display, Inter, IBM_Plex_Mono } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import Sketches from "@/components/Sketches";
+import { LangProvider } from "@/lib/i18n";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   style: ["normal", "italic"],
@@ -36,12 +38,17 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${fraunces.variable} ${inter.variable} ${plexMono.variable} h-full`}
+      className={`${playfair.variable} ${inter.variable} ${plexMono.variable} h-full`}
     >
       <body className="min-h-full flex flex-col bg-paper text-text">
-        <Nav />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <LangProvider>
+          <Sketches />
+          <div className="relative z-10 flex min-h-full flex-1 flex-col">
+            <Nav />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+        </LangProvider>
       </body>
     </html>
   );
