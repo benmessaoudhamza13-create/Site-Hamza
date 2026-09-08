@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useLang, useT } from "@/lib/i18n";
 import { ui } from "@/i18n/ui";
 
@@ -9,6 +10,13 @@ export default function Nav() {
   const pathname = usePathname();
   const { lang, setLang } = useLang();
   const t = useT();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const links = [
     { href: "/apropos", label: t(ui.nav.parcours) },
@@ -20,37 +28,35 @@ export default function Nav() {
     pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header className="sticky top-0 z-40 border-b rule bg-paper/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-4">
+    <header
+      className={`sticky top-0 z-40 border-b bg-paper/85 backdrop-blur-md transition-[box-shadow,border-color] duration-300 ${
+        scrolled ? "rule shadow-[0_8px_24px_rgba(31,36,32,0.06)]" : "border-transparent"
+      }`}
+    >
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-3 px-6 py-4">
         <Link href="/" className="group flex flex-col gap-1 leading-none">
-          <span className="font-display text-lg tracking-tight transition-colors duration-200 ease group-hover:text-accent">
+          <span className="font-display text-lg tracking-tight transition-colors duration-200 group-hover:text-accent">
             Hamza Ben Messaoud
           </span>
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-dim">
-            {t(ui.nav.tagline)}
-          </span>
+          <span className="label hidden sm:block">{t(ui.nav.tagline)}</span>
         </Link>
+
         <nav className="flex flex-wrap items-center gap-x-6 gap-y-2">
-          {links.map((l) => {
-            const active = isActive(l.href);
-            return (
-              <Link
-                key={l.href}
-                href={l.href}
-                aria-current={active ? "page" : undefined}
-                className={`relative py-1 font-mono text-xs uppercase tracking-widest transition-colors duration-200 ease hover:text-accent after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-200 after:ease-out hover:after:scale-x-100 ${
-                  active ? "text-accent after:scale-x-100" : "text-dim"
-                }`}
-              >
-                {l.label}
-              </Link>
-            );
-          })}
+          {links.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              aria-current={isActive(l.href) ? "page" : undefined}
+              className="nav-link"
+            >
+              {l.label}
+            </Link>
+          ))}
           <Link
             href="/contact"
             aria-current={isActive("/contact") ? "page" : undefined}
-            className={`rounded-lg border px-3 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-200 ease hover:border-accent hover:text-accent ${
-              isActive("/contact") ? "border-accent text-accent" : "rule"
+            className={`rounded-[var(--radius-btn)] border px-3 py-1.5 font-mono text-xs uppercase tracking-[0.1em] transition-colors duration-200 hover:border-accent hover:text-accent ${
+              isActive("/contact") ? "border-accent text-accent" : "rule text-text"
             }`}
           >
             {t(ui.nav.contact)}
@@ -60,11 +66,11 @@ export default function Nav() {
             onClick={() => setLang(lang === "fr" ? "en" : "fr")}
             aria-label={t(ui.nav.switchTo)}
             title={t(ui.nav.switchTo)}
-            className="relative flex overflow-hidden rounded-full border rule font-mono text-[10px] uppercase tracking-widest"
+            className="relative flex overflow-hidden rounded-full border rule font-mono text-[10px] uppercase tracking-[0.12em]"
           >
             <span
               aria-hidden
-              className={`absolute inset-y-0 w-1/2 rounded-full bg-accent transition-transform duration-250 ease-out ${
+              className={`absolute inset-y-0 w-1/2 rounded-full bg-accent transition-transform duration-300 ease-[var(--ease)] ${
                 lang === "en" ? "translate-x-full" : "translate-x-0"
               }`}
             />

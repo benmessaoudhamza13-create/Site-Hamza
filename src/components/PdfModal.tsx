@@ -46,7 +46,7 @@ export default function PdfModal({
         role="dialog"
         aria-modal="true"
         aria-label={title}
-        className="rise-in relative flex h-[88vh] w-full max-w-4xl flex-col overflow-hidden rounded-[14px] border rule bg-card shadow-[0_24px_64px_rgba(32,36,31,0.25)]"
+        className="rise-in relative flex h-[88vh] w-full max-w-4xl flex-col overflow-hidden rounded-[var(--radius-card)] border rule bg-card shadow-[var(--shadow-modal)]"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between gap-4 border-b rule px-4 py-3">

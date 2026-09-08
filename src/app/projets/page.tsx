@@ -64,29 +64,26 @@ export default function ProjetsPage() {
       </div>
 
       <div className="flex flex-col gap-4">
-        {shown.map((p) => (
+        {shown.map((p, i) => (
           <ProjectCard
             key={p.slug}
             p={p}
+            index={i}
             isOpen={open === p.slug}
             onToggle={() => setOpen(open === p.slug ? null : p.slug)}
             onOpenDoc={() => p.document && setDoc({ src: p.document, title: t(p.titre) })}
           />
         ))}
         {shown.length === 0 ? (
-          <p className="py-10 text-center font-mono text-xs uppercase tracking-widest text-dim">
-            {t(ui.projets.noResult)}
-          </p>
+          <p className="label py-10 text-center">{t(ui.projets.noResult)}</p>
         ) : null}
       </div>
 
       {/* En cours & à venir */}
       {ongoing.length > 0 ? (
-        <section className="mt-20 border-t rule pt-12">
-          <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-accent">
-            {t(ui.projets.ongoingEyebrow)}
-          </p>
-          <h2 className="mt-3 font-display text-2xl tracking-tight md:text-3xl">
+        <section className="mt-20 border-t rule pt-12" data-reveal>
+          <p className="eyebrow">{t(ui.projets.ongoingEyebrow)}</p>
+          <h2 className="mt-4 font-display text-2xl tracking-tight md:text-3xl">
             {t(ui.projets.ongoingTitle)}
           </h2>
           <div className="mt-8 flex flex-col gap-4">
@@ -116,12 +113,14 @@ export default function ProjetsPage() {
 
 function ProjectCard({
   p,
+  index = 0,
   isOpen,
   onToggle,
   onOpenDoc,
   ongoing = false,
 }: {
   p: Projet;
+  index?: number;
   isOpen: boolean;
   onToggle: () => void;
   onOpenDoc: () => void;
@@ -133,6 +132,8 @@ function ProjectCard({
   return (
     <article
       id={p.slug}
+      data-reveal
+      style={{ "--reveal-delay": `${Math.min(index, 5) * 60}ms` } as React.CSSProperties}
       className={`card group scroll-mt-28 ${
         ongoing ? "border-dashed" : ""
       } ${isOpen ? "card-static border-accent/30" : ""}`}
@@ -144,13 +145,7 @@ function ProjectCard({
         aria-controls={bodyId}
         className="flex w-full items-start gap-4 p-5 text-left md:p-6"
       >
-        <span
-          className={`mt-0.5 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl transition-colors duration-200 ${
-            isOpen
-              ? "bg-accent text-white"
-              : "bg-accent/[0.07] text-accent group-hover:bg-accent group-hover:text-white"
-          }`}
-        >
+        <span className={`tile mt-0.5 ${isOpen ? "tile-active" : ""}`}>
           <ProjectSketch icone={p.icone} className="h-7 w-7" />
         </span>
         <span className="min-w-0 flex-1">
@@ -158,18 +153,12 @@ function ProjectCard({
             <h3 className="font-display text-lg leading-snug transition-colors duration-200 group-hover:text-accent md:text-xl">
               {t(p.titre)}
             </h3>
-            {ongoing ? (
-              <span className="rounded-full bg-accent px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-white">
-                {t(ui.projets.inProgress)}
-              </span>
-            ) : null}
+            {ongoing ? <span className="chip chip-solid">{t(ui.projets.inProgress)}</span> : null}
           </span>
-          <span className="mt-1.5 block font-mono text-[11px] uppercase tracking-wide text-dim">
-            {t(p.resultat)}
-          </span>
+          <span className="meta mt-1.5 block text-dim">{t(p.resultat)}</span>
           {/* Aperçu au survol (fermé seulement) */}
           {!isOpen ? (
-            <span className="block max-h-0 overflow-hidden text-sm leading-relaxed text-dim opacity-0 transition-all duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:mt-3 group-hover:max-h-24 group-hover:opacity-100">
+            <span className="block max-h-0 overflow-hidden text-sm leading-relaxed text-dim opacity-0 transition-all duration-300 ease-[var(--ease)] group-hover:mt-3 group-hover:max-h-24 group-hover:opacity-100">
               {t(p.description)}
             </span>
           ) : null}
@@ -186,9 +175,7 @@ function ProjectCard({
 
       {isOpen ? (
         <div id={bodyId} className="reveal border-t rule px-5 pb-6 pt-5 md:px-6">
-          <p className="font-mono text-[10px] uppercase tracking-widest text-dim">
-            {t(p.periode)}
-          </p>
+          <p className="label">{t(p.periode)}</p>
           <p className="mt-4 text-sm leading-relaxed text-dim">{t(p.description)}</p>
           <ul className="mt-4 space-y-2">
             {t(p.details).map((d, i) => (
@@ -199,7 +186,7 @@ function ProjectCard({
             ))}
           </ul>
           <div className="mt-5 flex flex-wrap gap-2">
-            <span className="chip text-accent">{t(ui.cat[p.categorie])}</span>
+            <span className="chip chip-accent">{t(ui.cat[p.categorie])}</span>
             {t(p.tags).map((tag) => (
               <span key={tag} className="chip">
                 {tag}

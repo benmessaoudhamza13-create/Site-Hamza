@@ -40,7 +40,7 @@ export default function CvButton({ className = "btn btn-primary" }: { className?
           <div
             role="group"
             aria-label="FR / EN"
-            className="flex shrink-0 overflow-hidden rounded-full border rule font-mono text-[10px] uppercase tracking-widest"
+            className="flex shrink-0 overflow-hidden rounded-full border rule font-mono text-[10px] uppercase tracking-[0.12em]"
           >
             {(["fr", "en"] as const).map((l) => (
               <button

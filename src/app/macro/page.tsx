@@ -53,17 +53,18 @@ export default function MacroPage() {
       {showLatest ? (
         <Link
           href={`/macro/${latest.slug}`}
-          className="featured group relative block overflow-hidden rounded-[14px] p-7 transition-transform duration-200 hover:-translate-y-0.5 md:p-9"
+          className="featured group block p-7 md:p-9"
+          data-reveal
         >
-          <span className="pointer-events-none absolute -right-10 -top-10 h-56 w-56 rounded-full bg-white/[0.06] transition-transform duration-500 group-hover:scale-125" />
-          <p className="eyebrow font-mono text-[11px] uppercase tracking-[0.25em]">
+          <span className="halo" />
+          <p className="eyebrow relative">
             {t(ui.macro.latest)} — {t(latest.date)}
           </p>
           <h3 className="mt-4 max-w-2xl font-display text-2xl italic leading-snug md:text-3xl">
             {t(latest.titre)}
           </h3>
           <p className="mt-4 max-w-2xl text-white/80">{t(latest.resume)}</p>
-          <span className="link-arrow mt-8 inline-flex font-mono text-xs uppercase tracking-widest">
+          <span className="link-arrow meta relative mt-8 inline-flex">
             {t(ui.macro.read)} <span className="arrow">→</span>
           </span>
         </Link>
@@ -71,26 +72,24 @@ export default function MacroPage() {
 
       {archive.length > 0 ? (
         <>
-          <p className="mt-12 mb-5 font-mono text-[11px] uppercase tracking-[0.25em] text-accent">
-            {t(ui.macro.archive)}
-          </p>
+          <p className="eyebrow mt-12 mb-5">{t(ui.macro.archive)}</p>
           <div className="grid gap-4 md:grid-cols-2">
-            {archive.map((r) => (
+            {archive.map((r, i) => (
               <Link
                 key={r.slug}
                 href={`/macro/${r.slug}`}
                 className="card group flex flex-col justify-between p-6"
+                data-reveal
+                style={{ "--reveal-delay": `${Math.min(i, 5) * 60}ms` } as React.CSSProperties}
               >
                 <div>
-                  <p className="font-mono text-[11px] uppercase tracking-widest text-accent">
-                    {t(r.date)}
-                  </p>
+                  <p className="label text-accent">{t(r.date)}</p>
                   <h3 className="mt-2 font-display text-xl italic leading-snug transition-colors duration-200 group-hover:text-accent">
                     {t(r.titre)}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-dim">{t(r.resume)}</p>
                 </div>
-                <span className="link-arrow mt-5 font-mono text-[11px] uppercase tracking-widest text-dim group-hover:text-accent">
+                <span className="link-arrow meta mt-5 text-dim group-hover:text-accent">
                   {t(ui.macro.read)} <span className="arrow">→</span>
                 </span>
               </Link>
@@ -100,9 +99,7 @@ export default function MacroPage() {
       ) : null}
 
       {!showLatest && archive.length === 0 ? (
-        <p className="py-10 text-center font-mono text-xs uppercase tracking-widest text-dim">
-          {t(ui.macro.noResult)}
-        </p>
+        <p className="label py-10 text-center">{t(ui.macro.noResult)}</p>
       ) : null}
     </div>
   );

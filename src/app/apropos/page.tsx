@@ -166,13 +166,9 @@ export default function AProposPage() {
 
       {/* FRISE SERPENTINE */}
       <section className="mt-16 border-t rule pt-12">
-        <div className="mb-10 flex flex-wrap items-baseline justify-between gap-3">
-          <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-accent">
-            {t(ui.apropos.timelineEyebrow)}
-          </p>
-          <p className="hidden font-mono text-[10px] uppercase tracking-widest text-dim md:block">
-            {t(ui.apropos.timelineHint)}
-          </p>
+        <div className="mb-10 flex flex-wrap items-baseline justify-between gap-3" data-reveal>
+          <p className="eyebrow">{t(ui.apropos.timelineEyebrow)}</p>
+          <p className="label hidden md:block">{t(ui.apropos.timelineHint)}</p>
         </div>
 
         <ol className="relative">
@@ -185,6 +181,8 @@ export default function AProposPage() {
             return (
               <li
                 key={i}
+                data-reveal
+                style={{ "--reveal-delay": `${Math.min(i, 5) * 50}ms` } as React.CSSProperties}
                 className={`timeline-item relative grid gap-x-12 pb-12 md:grid-cols-2 ${
                   isOpen ? "is-open" : ""
                 } ${last ? "pb-4" : ""}`}
@@ -241,14 +239,10 @@ export default function AProposPage() {
                         {t(step.titre)}
                       </h3>
                       {step.current ? (
-                        <span className="rounded-full bg-gold/15 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-gold">
-                          {t(ui.apropos.current)}
-                        </span>
+                        <span className="chip chip-gold">{t(ui.apropos.current)}</span>
                       ) : null}
                     </span>
-                    <span className="mt-1.5 block font-mono text-xs uppercase tracking-wide text-dim">
-                      {t(step.sousTitre)}
-                    </span>
+                    <span className="meta mt-1.5 block text-dim">{t(step.sousTitre)}</span>
                     {step.details ? (
                       <span className="timeline-detail">
                         <span className="block">
@@ -272,16 +266,14 @@ export default function AProposPage() {
       </section>
 
       {/* COMPÉTENCES */}
-      <section className="mt-12 border-t rule pt-12">
-        <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-accent">
-          {t(ui.apropos.skillsEyebrow)}
-        </p>
+      <section className="mt-12 border-t rule pt-12" data-reveal>
+        <p className="eyebrow">{t(ui.apropos.skillsEyebrow)}</p>
         <div className="mt-8 grid gap-8 sm:grid-cols-2">
           <div>
             <h3 className="font-display text-lg">{t(ui.apropos.analysis)}</h3>
             <div className="mt-3 flex flex-wrap gap-2">
               {t(analyse).map((s) => (
-                <span key={s} className="chip transition-transform duration-200 hover:-translate-y-0.5 hover:border-accent hover:text-accent">
+                <span key={s} className="chip chip-hover">
                   {s}
                 </span>
               ))}
@@ -291,7 +283,7 @@ export default function AProposPage() {
             <h3 className="font-display text-lg">{t(ui.apropos.tools)}</h3>
             <div className="mt-3 flex flex-wrap gap-2">
               {outils.map((s) => (
-                <span key={s} className="chip transition-transform duration-200 hover:-translate-y-0.5 hover:border-accent hover:text-accent">
+                <span key={s} className="chip chip-hover">
                   {s}
                 </span>
               ))}
@@ -304,10 +296,10 @@ export default function AProposPage() {
                 <span
                   key={code}
                   tabIndex={0}
-                  className="tip chip cursor-default transition-transform duration-200 hover:-translate-y-0.5 hover:border-accent hover:text-accent"
+                  className="tip chip chip-hover cursor-default"
                 >
                   {ui.langs[code].code} · {t(ui.langs[code].level)}
-                  <span className="tip-bubble rounded-xl border rule bg-card px-3 py-1.5 font-display text-base normal-case tracking-normal text-text shadow-[0_8px_24px_rgba(32,36,31,0.12)]">
+                  <span className="tip-bubble px-3 py-1.5 font-display text-base normal-case tracking-normal text-text">
                     {ui.langs[code].greeting}
                   </span>
                 </span>
@@ -329,10 +321,8 @@ export default function AProposPage() {
       </section>
 
       {/* ENGAGEMENT */}
-      <section className="mt-12 border-t rule pt-12">
-        <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-accent">
-          {t(ui.apropos.engagementEyebrow)}
-        </p>
+      <section className="mt-12 border-t rule pt-12" data-reveal>
+        <p className="eyebrow">{t(ui.apropos.engagementEyebrow)}</p>
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           <div className="card card-static p-6">
             <h3 className="font-display text-lg">{t(ui.apropos.leadership)}</h3>
@@ -342,11 +332,7 @@ export default function AProposPage() {
                   <span className="block transition-colors duration-200 group-hover/l:text-accent">
                     {t(item.titre)}
                   </span>
-                  {item.detail ? (
-                    <span className="block font-mono text-[10px] uppercase tracking-widest text-dim">
-                      {t(item.detail)}
-                    </span>
-                  ) : null}
+                  {item.detail ? <span className="label block">{t(item.detail)}</span> : null}
                 </li>
               ))}
             </ul>
@@ -355,7 +341,7 @@ export default function AProposPage() {
             <h3 className="font-display text-lg">{t(ui.apropos.benevolat)}</h3>
             <div className="mt-4 flex flex-wrap gap-2">
               {benevolat.map((b) => (
-                <span key={b} className="chip transition-transform duration-200 hover:-translate-y-0.5 hover:border-accent hover:text-accent">
+                <span key={b} className="chip chip-hover">
                   {b}
                 </span>
               ))}
@@ -365,7 +351,7 @@ export default function AProposPage() {
             <h3 className="font-display text-lg">{t(ui.apropos.sport)}</h3>
             <div className="mt-4 flex flex-wrap gap-2">
               {sport.map((s) => (
-                <span key={s} className="chip transition-transform duration-200 hover:-translate-y-0.5 hover:border-accent hover:text-accent">
+                <span key={s} className="chip chip-hover">
                   {s}
                 </span>
               ))}
