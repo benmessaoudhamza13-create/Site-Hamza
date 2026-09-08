@@ -8,6 +8,7 @@ import { useT } from "@/lib/i18n";
 import { ui } from "@/i18n/ui";
 import Skyline from "@/components/Skyline";
 import ProjectSketch from "@/components/ProjectSketch";
+import CvButton from "@/components/CvButton";
 
 const highlights = projets.filter((p) => p.statut !== "En cours").slice(0, 6);
 const [featured, ...others] = revuesMacro;
@@ -31,13 +32,17 @@ export default function Home() {
             <Link href="/projets" className="btn btn-primary">
               {t(ui.hero.ctaProjects)}
             </Link>
-            <Link href="/macro" className="btn btn-secondary">
-              {t(ui.hero.ctaMacro)}
+            <CvButton className="btn btn-secondary" />
+            <Link
+              href="/macro"
+              className="link-arrow ml-2 font-mono text-xs uppercase tracking-widest text-dim transition-colors duration-200 hover:text-accent"
+            >
+              {t(ui.hero.ctaMacro)} <span className="arrow">→</span>
             </Link>
-            <span className="ml-1 hidden font-mono text-[11px] uppercase tracking-[0.25em] text-dim sm:inline">
-              — {t(ui.hero.place)}
-            </span>
           </div>
+          <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.25em] text-dim">
+            {t(ui.hero.place)}
+          </p>
         </div>
         <div className="pointer-events-none relative mx-auto -mt-6 max-w-7xl md:-mt-16">
           <Skyline className="skyline w-full opacity-[0.55]" />

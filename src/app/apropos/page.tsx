@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Award } from "lucide-react";
 import SectionHeader from "@/components/SectionHeader";
-import PdfModal from "@/components/PdfModal";
+import CvButton from "@/components/CvButton";
 import { useT, type L } from "@/lib/i18n";
 import { ui } from "@/i18n/ui";
 
@@ -150,15 +150,8 @@ const leadership: { titre: L; detail?: L }[] = [
 const benevolat = ["Fondation Marie-Vincent", "Mission Bon Accueil", "Moisson Rive-Sud"];
 const sport = ["Triathlon", "Hyrox", "Spartan Race"];
 
-const CV_PATHS = {
-  fr: "/documents/Hamza_CV_FR.pdf",
-  en: "/documents/Hamza_CV_EN.pdf",
-} as const;
-
 export default function AProposPage() {
   const t = useT();
-  const [cvOpen, setCvOpen] = useState(false);
-  const [cvLang, setCvLang] = useState<"fr" | "en">("fr");
   const [openStep, setOpenStep] = useState<number | null>(null);
 
   return (
@@ -168,9 +161,7 @@ export default function AProposPage() {
       <p className="max-w-2xl text-base leading-relaxed text-dim">{t(ui.apropos.intro)}</p>
 
       <div className="mt-9">
-        <button type="button" onClick={() => setCvOpen(true)} className="btn btn-primary">
-          {t(ui.apropos.cv)}
-        </button>
+        <CvButton />
       </div>
 
       {/* FRISE SERPENTINE */}
@@ -383,33 +374,6 @@ export default function AProposPage() {
         </div>
       </section>
 
-      <PdfModal
-        open={cvOpen}
-        onClose={() => setCvOpen(false)}
-        src={CV_PATHS[cvLang]}
-        title={`${t(ui.apropos.cvTitle)} (${cvLang.toUpperCase()})`}
-        toolbar={
-          <div
-            role="group"
-            aria-label="FR / EN"
-            className="flex shrink-0 overflow-hidden rounded-full border rule font-mono text-[10px] uppercase tracking-widest"
-          >
-            {(["fr", "en"] as const).map((lang) => (
-              <button
-                key={lang}
-                type="button"
-                onClick={() => setCvLang(lang)}
-                aria-pressed={cvLang === lang}
-                className={`px-3 py-1 transition-colors duration-200 ease ${
-                  cvLang === lang ? "bg-accent text-white" : "text-dim hover:text-accent"
-                }`}
-              >
-                {lang.toUpperCase()}
-              </button>
-            ))}
-          </div>
-        }
-      />
     </div>
   );
 }

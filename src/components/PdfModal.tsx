@@ -84,7 +84,26 @@ export default function PdfModal({
             </button>
           </div>
         </div>
-        <iframe src={src} title={title} className="h-full w-full bg-paper" />
+        <object
+          data={src}
+          type="application/pdf"
+          aria-label={title}
+          className="h-full w-full bg-paper"
+        >
+          <div className="flex h-full flex-col items-center justify-center gap-5 p-8 text-center">
+            <p className="max-w-sm text-sm leading-relaxed text-dim">{t(ui.pdf.fallback)}</p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <a href={src} target="_blank" rel="noreferrer" className="btn btn-primary">
+                <ExternalLink size={14} strokeWidth={1.75} aria-hidden />
+                {t(ui.pdf.fullscreen)}
+              </a>
+              <a href={src} download className="btn btn-secondary">
+                <Download size={14} strokeWidth={1.75} aria-hidden />
+                {t(ui.pdf.download)}
+              </a>
+            </div>
+          </div>
+        </object>
       </div>
     </div>
   );

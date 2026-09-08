@@ -132,5 +132,9 @@ export const ui = {
     close: l("Fermer", "Close"),
     download: l("Télécharger", "Download"),
     fullscreen: l("Ouvrir dans un onglet", "Open in a tab"),
+    fallback: l(
+      "Votre navigateur n’affiche pas le PDF ici. Ouvrez-le dans un onglet ou téléchargez-le.",
+      "Your browser doesn’t display the PDF here. Open it in a tab or download it.",
+    ),
   },
 } as const;
