@@ -6,7 +6,7 @@ export const ui = {
   nav: {
     parcours: l("Mon parcours", "My path"),
     projets: l("Projets", "Projects"),
-    macro: l("Revue macro", "Macro review"),
+    revue: l("Revue", "Review"),
     contact: l("Contact", "Contact"),
     tagline: l(
       "Économie appliquée et finance — HEC Montréal",
@@ -35,9 +35,9 @@ export const ui = {
     macroEyebrow: l("Revue macro", "Macro review"),
     macroTitle: l("Mes revues macro", "My macro reviews"),
     featured: l("À la une", "Featured"),
-    readReview: l("Lire la revue", "Read the review"),
-    moreSoon: l("D’autres revues arrivent.", "More reviews coming."),
-    allReviews: l("Toutes les revues", "All reviews"),
+    readReview: l("Lire la note", "Read the note"),
+    moreSoon: l("D’autres notes arrivent.", "More notes coming."),
+    allReviews: l("Toutes les notes", "All notes"),
   },
   cat: {
     Portefeuille: l("Portefeuille", "Portfolio"),
@@ -62,22 +62,32 @@ export const ui = {
     preview: l("Aperçu", "Preview"),
     noResult: l("Aucun projet dans cette catégorie.", "No project in this category."),
   },
-  macro: {
-    eyebrow: l("Mes revues macro", "My macro reviews"),
+  revue: {
+    eyebrow: l("Revue macro", "Macro review"),
     title: l(
       "Ce qui a bougé, et pourquoi ça compte",
       "What moved, and why it matters",
     ),
     intro: l(
-      "Une lecture courte des marchés : trois angles fixes — ce qui a bougé, pourquoi ça compte, ce que je surveille ensuite. L’entrée ci-dessous est un modèle ; les prochaines publications suivront ce format.",
-      "A short read on markets: three fixed angles — what moved, why it matters, what I’m watching next. The entry below is a template; upcoming issues will follow this format.",
+      "Des notes d’analyse macroéconomique, une idée à la fois : ce qui a bougé, pourquoi ça compte, ce que je surveille ensuite. Chaque note existe aussi en version PDF.",
+      "Macro analysis notes, one idea at a time: what moved, why it matters, what I’m watching next. Each note is also available as a PDF.",
     ),
     read: l("Lire", "Read"),
-    back: l("Toutes les revues", "All reviews"),
-    search: l("Rechercher une revue…", "Search reviews…"),
-    latest: l("Dernière revue", "Latest review"),
+    back: l("Toutes les notes", "All notes"),
+    search: l("Rechercher une note…", "Search notes…"),
+    latest: l("Dernière note", "Latest note"),
     archive: l("Archive", "Archive"),
-    noResult: l("Aucune revue ne correspond.", "No matching review."),
+    noResult: l("Aucune note ne correspond.", "No matching note."),
+    download: l("Télécharger la note", "Download the note"),
+    pdfNote: l("Version note de recherche (PDF)", "Research note version (PDF)"),
+    pdfHint: l(
+      "La note complète, mise en page pour l’impression et le partage.",
+      "The full note, laid out for print and sharing.",
+    ),
+    minutes: l("min de lecture", "min read"),
+    published: l("Publié le", "Published"),
+    next: l("Note suivante", "Next note"),
+    previous: l("Note précédente", "Previous note"),
   },
   contact: {
     eyebrow: l("Contact", "Contact"),

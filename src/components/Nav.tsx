@@ -21,7 +21,7 @@ export default function Nav() {
   const links = [
     { href: "/apropos", label: t(ui.nav.parcours) },
     { href: "/projets", label: t(ui.nav.projets) },
-    { href: "/macro", label: t(ui.nav.macro) },
+    { href: "/revue", label: t(ui.nav.revue) },
   ];
 
   const isActive = (href: string) =>

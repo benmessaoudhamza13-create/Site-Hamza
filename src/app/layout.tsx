@@ -27,6 +27,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://site-hamza.vercel.app"),
   title: "Hamza Ben Messaoud — Économie appliquée et finance",
   description:
     "Portfolio de Hamza Ben Messaoud, candidat à la maîtrise en finance de marché à HEC Montréal — projets, évaluations et revue macro.",
