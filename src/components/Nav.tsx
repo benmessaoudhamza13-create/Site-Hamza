@@ -36,7 +36,7 @@ export default function Nav() {
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-3 px-6 py-4">
         <Link href="/" className="group flex flex-col gap-1 leading-none">
           <span className="font-display text-lg tracking-tight transition-colors duration-200 group-hover:text-accent">
-            Hamza Ben Messaoud
+            Hamza Benmessaoud
           </span>
           <span className="label hidden sm:block">{t(ui.nav.tagline)}</span>
         </Link>

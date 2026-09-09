@@ -78,7 +78,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t rule pt-6">
-          <span className="font-display text-sm text-[var(--text-on-dark-dim)]">Hamza Ben Messaoud</span>
+          <span className="font-display text-sm text-[var(--text-on-dark-dim)]">Hamza Benmessaoud</span>
           <span className="label">HEC Montréal</span>
         </div>
       </div>

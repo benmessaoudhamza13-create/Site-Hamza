@@ -1,4 +1,4 @@
-# Portfolio — Hamza Ben Messaoud
+# Portfolio — Hamza Benmessaoud
 
 Site perso construit avec Next.js (App Router) + Tailwind CSS v4.
 
